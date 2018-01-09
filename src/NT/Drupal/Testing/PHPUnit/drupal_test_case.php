@@ -26,7 +26,7 @@ namespace NT\Drupal\Testing\PHPUnit;
  * @runTestsInSeparateProcess
  * @preserveGlobalState disabled
  */
-abstract class DrupalTestCase extends \PHPUnit_Framework_TestCase {
+abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
 
   /**
    * The profile to install as a basis for testing.

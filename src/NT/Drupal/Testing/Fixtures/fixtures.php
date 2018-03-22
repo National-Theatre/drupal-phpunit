@@ -1,7 +1,7 @@
 <?php
 /**
  *  @copyright The Royal National Theatre
- *  @author John-Paul Drawneek <jdrawneek@nationaltheatre.org.uk>
+ *  @author John-Paul Drawneek <jpd4nt@users.noreply.github.com>
  */
 namespace NT\Drupal\Testing\Fixtures;
 

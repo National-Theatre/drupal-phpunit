@@ -12,6 +12,6 @@ php:
 install:
   - composer install
 script:
-  - python -mjson.tool composer.json
+  - php -r 'include "vendor/autoload.php"; new NT\Drupal\Testing\PHPUnit\DrupalTestCase;'
 after_install:
   - composer show

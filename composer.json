@@ -5,8 +5,8 @@
     "type": "library",
     "authors": [
     {
-      "name": "John-Paul Drawneek",
-      "email": "jdrawneek@nationaltheatre.org.uk"
+      "name": "Royal National Theatre",
+      "email": "NTCI@users.noreply.github.com"
     }
     ],
     "require": {
@@ -22,7 +22,7 @@
       },
       "classmap": [
         "src/NT/Drupal/Testing/PHPUnit/",
-      "src/NT/Drupal/Testing/Fixtures/"
+        "src/NT/Drupal/Testing/Fixtures/"
       ]
     }
 } 

@@ -16,6 +16,11 @@
     "behat/mink":           "1.*@stable",
     "behat/mink-extension": "*"
   },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+    "drupal/coder":                    "^8@stable",
+    "pheromone/phpcs-security-audit":  "1.*@stable"
+  },
   "autoload": {
     "psr-0": {
       "NT\\Drupal\\Testing": "src"

@@ -12,6 +12,8 @@ php:
 install:
   - composer install
 script:
-  - php -r 'include "vendor/autoload.php"; new NT\Drupal\Testing\PHPUnit\DrupalTestCase;'
+  - find src -name "*.php" -exec php -l {} ';'
+  - composer -v exec 'phpcs --standard=Drupal src'
+  - php -r 'include "vendor/autoload.php"; class MyTest extends \NT\Drupal\Testing\PHPUnit\DrupalTestCase {};'
 after_install:
   - composer show

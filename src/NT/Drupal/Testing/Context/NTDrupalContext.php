@@ -1,9 +1,4 @@
 <?php
-/*
- * @file Defines features context.
- * @copyright The Royal National Theatre
- * @author John-Paul Drawneek <jpd4nt@users.noreply.github.com>
- */
 namespace NT\Drupal\Testing\Context;
 
 use Drupal\DrupalExtension\Context\DrupalContext;

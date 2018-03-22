@@ -19,7 +19,8 @@
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
     "drupal/coder":                    "^8@stable",
-    "pheromone/phpcs-security-audit":  "1.*@stable"
+    "pheromone/phpcs-security-audit":  "^1@stable",
+    "squizlabs/php_codesniffer":       "^2@stable"
   },
   "autoload": {
     "psr-0": {

@@ -19,14 +19,19 @@
  *     - Compare speed versus simpletest.
  *     - move upal_init() to a class thats called early in the suite.
  */
+
 namespace NT\Drupal\Testing\PHPUnit;
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestResult;
+
 /*
  * @todo: Perhaps move these annotations down to the instance classes and tests.
  *
  * @runTestsInSeparateProcess
  * @preserveGlobalState disabled
  */
-abstract class DrupalTestCase extends \PHPUnit_Framework_TestCase {
+abstract class DrupalTestCase extends TestCase {
 
   /**
    * The profile to install as a basis for testing.
@@ -150,7 +155,7 @@ abstract class DrupalTestCase extends \PHPUnit_Framework_TestCase {
    */
   protected $redirect_count;
 
-  public function run(\PHPUnit_Framework_TestResult $result = NULL) {
+  public function run(TestResult $result = NULL) {
     $this->setPreserveGlobalState(FALSE);
     return parent::run($result);
   }

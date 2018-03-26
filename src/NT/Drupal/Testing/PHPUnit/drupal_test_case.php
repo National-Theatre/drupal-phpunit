@@ -1322,7 +1322,7 @@ abstract class DrupalTestCase extends TestCase {
       '!method' => !empty($curl_options[CURLOPT_NOBODY]) ? 'HEAD' : (empty($curl_options[CURLOPT_POSTFIELDS]) ? 'GET' : 'POST'),
       '@url' => isset($original_url) ? $original_url : $url,
       '@status' => $status,
-      '!length' => format_size(strlen($this->drupalGetContent()))
+      '!length' => format_size(strlen($this->drupalGetContent())),
     );
     $message = t('!method @url returned @status (!length).', $message_vars);
     $this->assertTrue($this->drupalGetContent() !== FALSE, $message, t('Browser'));
@@ -1629,7 +1629,7 @@ abstract class DrupalTestCase extends TestCase {
 
     $edit = array(
       'name' => $user->name,
-      'pass' => $user->pass_raw
+      'pass' => $user->pass_raw,
     );
     $this->drupalPost('user', $edit, t('Log in'));
 

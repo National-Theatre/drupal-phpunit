@@ -25,16 +25,16 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
     protected function loadProduction(array $config) {
         $config += array(
-            'title'        => '',
-            'body'         => '',
-            'author'       => '',
-            'image'        => '',
-            'playwright'   => '',
-            'company'      => '',
-            'theatre'      => '',
-            'originalDate' => '',
-            'openingNight' => '',
-            'pressNight'   => ''
+          'title'        => '',
+          'body'         => '',
+          'author'       => '',
+          'image'        => '',
+          'playwright'   => '',
+          'company'      => '',
+          'theatre'      => '',
+          'originalDate' => '',
+          'openingNight' => '',
+          'pressNight'   => '',
             
         );
         try {
@@ -84,8 +84,8 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
     protected function loadTheatre(array $config) {
         $config += array(
-            'title'   => '',
-            'address' => ''
+          'title'   => '',
+          'address' => '',
         );
         
         try {
@@ -110,7 +110,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
     protected function loadCompany(array $config) {
         $config += array(
-            'title' => ''
+          'title' => '',
         );
         try {
             $this->getSession()->visit($this->base_path . '/node/add/company');
@@ -132,19 +132,19 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
     protected function loadPlaywright(array $config) {
         $config += array(
-            'title'              => '',
-            'body'               => '',
-            'RecordID'           => '',
-            'Role RecordID'      => '',
-            'Name RecordID'      => '',
-            'Person Details'     => '',
-            'Main Image'         => '',
-            'production history' => array(),
-            'biblio fields'      => array(),
-            'critical sources'   => array(),
-            'articles'           => array(),
-            'videos'             => array(),
-            'scripts'            => array()
+          'title'              => '',
+          'body'               => '',
+          'RecordID'           => '',
+          'Role RecordID'      => '',
+          'Name RecordID'      => '',
+          'Person Details'     => '',
+          'Main Image'         => '',
+          'production history' => array(),
+          'biblio fields'      => array(),
+          'critical sources'   => array(),
+          'articles'           => array(),
+          'videos'             => array(),
+          'scripts'            => array(),
         );
         try {
             $this->getSession()->visit($this->base_path . '/node/add/playwright');
@@ -201,11 +201,11 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     protected function loadFeaturedItem(array $config) {
         
         $config += array(
-            'title'     => '',
-            'body'      => '',
-            'item'      => '',
-            'grouping'  => '#edit-bbpa-item-grouping-und-none',
-            'weighting' => 40
+          'title'     => '',
+          'body'      => '',
+          'item'      => '',
+          'grouping'  => '#edit-bbpa-item-grouping-und-none',
+          'weighting' => 40,
         );
         try {
             $this->getSession()->visit($this->base_path . '/node/add/featured-item');
@@ -240,10 +240,10 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     protected function loadArticle(array $config) {
         
         $config += array(
-            'title'  => '',
-            'body'   => '',
-            'image' => '',
-            'layout'   => 'bbpa_article_layout_basic'
+          'title'  => '',
+          'body'   => '',
+          'image' => '',
+          'layout'   => 'bbpa_article_layout_basic',
         );
         try {
             $this->getSession()->visit($this->base_path . '/node/add/bbpa-article');
@@ -274,10 +274,10 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     protected function loadImage(array $config) {
         
         $config += array(
-            'title'  => '',
-            'body'   => '',
-            'dTitle' => '',
-            'file'   => ''
+          'title'  => '',
+          'body'   => '',
+          'dTitle' => '',
+          'file'   => '',
         );        
         try {
             $this->getSession()->visit($this->base_path . '/node/add/image');
@@ -308,12 +308,12 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     protected function loadVideo(array $config) {
         
         $config += array(
-            'title'        => '',
-            'body'         => '',
-            'dTitle'       => '',
-            'file'         => '',
-            'running_time' => '0.33',
-            'thumbnail'    => ''
+          'title'        => '',
+          'body'         => '',
+          'dTitle'       => '',
+          'file'         => '',
+          'running_time' => '0.33',
+          'thumbnail'    => '',
         );
         try {
             $this->getSession()->visit($this->base_path . '/node/add/video');

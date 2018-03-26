@@ -26,11 +26,13 @@ namespace NT\Drupal\Testing\PHPUnit;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestResult;
 
-/*
- * @todo: Perhaps move these annotations down to the instance classes and tests.
+/**
  *
- * @runTestsInSeparateProcess
- * @preserveGlobalState disabled
+ *@todo: Perhaps move these annotations down to the instance classes and tests.
+ *
+ *@runTestsInSeparateProcess
+ *@preserveGlobalState disabled
+ 
  */
 abstract class DrupalTestCase extends TestCase {
 

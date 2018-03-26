@@ -1,7 +1,9 @@
 <?php
 
 namespace NT\Drupal\Testing\Fixtures;
-
+/**
+ *
+ */
 class fixture_helper {
 
   protected static $instance;

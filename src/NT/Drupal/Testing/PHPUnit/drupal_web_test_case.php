@@ -1,7 +1,9 @@
 <?php
 
 namespace NT\Drupal\Testing\PHPUnit;
-
+/**
+ *
+ */
 abstract class DrupalWebTestCase extends DrupalTestCase {
 
   protected $prefix;

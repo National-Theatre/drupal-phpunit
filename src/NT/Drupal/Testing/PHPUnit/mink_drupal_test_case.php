@@ -154,8 +154,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    *
    * @return Behat\Mink\Session
    */
-  protected static function initZombieSession($host = '127.0.0.1', $port = 8124,
-                                                $autoServer = true, $nodeBin = 'node') {
+  protected static function initZombieSession($host = '127.0.0.1', $port = 8124, $autoServer = true, $nodeBin = 'node') {
     $connection = new ZombieConnection($host, $port);
     $server     = $autoServer ? new ZombieServer($host, $port, $nodeBin) : null;
 
@@ -173,8 +172,9 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    * @return Behat\Mink\Session
    */
   protected static function initSeleniumSession($browser = '*firefox',
-                                                  $baseUrl = 'http://localhost',
-                                                  $host = '127.0.0.1', $port = 4444) {
+                                                $baseUrl = 'http://localhost',
+                                                $host = '127.0.0.1',
+                                                $port = 4444) {
     return new Session(new SeleniumDriver($browser, $baseUrl, new SeleniumClient($host, $port)));
   }
 

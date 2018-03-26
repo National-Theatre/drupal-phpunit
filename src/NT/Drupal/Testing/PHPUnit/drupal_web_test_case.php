@@ -1,9 +1,5 @@
 <?php
 
-/**
- *  @copyright The Royal National Theatre
- *  @author John-Paul Drawneek <jpd4nt@users.noreply.github.com>
- */
 namespace NT\Drupal\Testing\PHPUnit;
 
 abstract class DrupalWebTestCase extends DrupalTestCase {

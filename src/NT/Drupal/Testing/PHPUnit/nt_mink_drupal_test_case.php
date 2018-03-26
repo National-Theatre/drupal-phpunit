@@ -1,10 +1,5 @@
 <?php
 
-/**
- *  @copyright The Royal National Theatre
- *  @author John-Paul Drawneek <jpd4nt@users.noreply.github.com>
- */
-
 namespace NT\Drupal\Testing\PHPUnit;
 use Behat\Mink\Driver\Selenium2Driver;
 

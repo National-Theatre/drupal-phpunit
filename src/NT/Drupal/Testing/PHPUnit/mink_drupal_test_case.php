@@ -52,9 +52,9 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    * Destroys mink instance.
    */
   public static function tearDownAfterClass() {
-    if (null !== self::$minkTestCaseMinkInstance) {
+    if (NULL !== self::$minkTestCaseMinkInstance) {
       self::$minkTestCaseMinkInstance->stopSessions();
-      self::$minkTestCaseMinkInstance = null;
+      self::$minkTestCaseMinkInstance = NULL;
     }
   }
 
@@ -71,7 +71,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    * @return Behat\Mink\Mink
    */
   public function getMink() {
-    if (null === self::$minkTestCaseMinkInstance) {
+    if (NULL === self::$minkTestCaseMinkInstance) {
       throw new \RuntimeException(
         'Mink is not initialized. Forgot to call parent context setUpBeforeClass()?'
       );
@@ -87,7 +87,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    *
    * @return Behat\Mink\Session
    */
-  public function getSession($name = null) {
+  public function getSession($name = NULL) {
     return $this->getMink()->getSession($name);
   }
 
@@ -125,7 +125,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    * @return Behat\Mink\Session
    */
   protected static function initGoutteSession(array $zendConfig = array(), array $serverParameters = array()) {
-    $zendConfig = array_merge(array('encodecookies' => false), $zendConfig);
+    $zendConfig = array_merge(array('encodecookies' => FALSE), $zendConfig);
 
     return new Session(new GoutteDriver(new GoutteClient($zendConfig, $serverParameters)));
   }
@@ -140,7 +140,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    *
    * @return Behat\Mink\Session
    */
-  protected static function initSahiSession($browser = 'firefox', $sid = null, $host = 'localhost', $port = 9999) {
+  protected static function initSahiSession($browser = 'firefox', $sid = NULL, $host = 'localhost', $port = 9999) {
     return new Session(new SahiDriver($browser, new SahiClient(new SahiConnection($sid, $host, $port))));
   }
 
@@ -154,9 +154,9 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    *
    * @return Behat\Mink\Session
    */
-  protected static function initZombieSession($host = '127.0.0.1', $port = 8124, $autoServer = true, $nodeBin = 'node') {
+  protected static function initZombieSession($host = '127.0.0.1', $port = 8124, $autoServer = TRUE, $nodeBin = 'node') {
     $connection = new ZombieConnection($host, $port);
-    $server     = $autoServer ? new ZombieServer($host, $port, $nodeBin) : null;
+    $server     = $autoServer ? new ZombieServer($host, $port, $nodeBin) : NULL;
 
     return new Session(new ZombieDriver($connection, $server, $autoServer));
   }

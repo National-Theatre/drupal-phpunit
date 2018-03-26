@@ -32,7 +32,6 @@ use PHPUnit\Framework\TestResult;
  *
  *@runTestsInSeparateProcess
  *@preserveGlobalState disabled
- 
  */
 abstract class DrupalTestCase extends TestCase {
 
@@ -129,7 +128,7 @@ abstract class DrupalTestCase extends TestCase {
   protected $originalShutdownCallbacks = array();
 
   /**
-   * HTTP authentication method
+   * HTTP authentication method.
    */
   protected $httpauth_method = CURLAUTH_BASIC;
 
@@ -170,6 +169,7 @@ abstract class DrupalTestCase extends TestCase {
    *   The message to display along with the assertion.
    * @param $group
    *   The type of assertion - examples are "Browser", "PHP".
+   *
    * @return
    *   TRUE.
    */
@@ -187,6 +187,7 @@ abstract class DrupalTestCase extends TestCase {
    *   The type of assertion - examples are "Browser", "PHP".
    * @param $caller
    *   The caller of the error.
+   *
    * @return
    *   FALSE.
    */
@@ -243,6 +244,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -263,6 +265,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -284,6 +287,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -302,6 +306,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -322,6 +327,7 @@ abstract class DrupalTestCase extends TestCase {
    *   The group this message belongs to.
    * @param $not_exists
    *   TRUE if this text should not exist, FALSE if it should.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -348,6 +354,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -368,6 +375,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -388,6 +396,7 @@ abstract class DrupalTestCase extends TestCase {
    *   The group this message belongs to.
    * @param $be_unique
    *   TRUE if this text should be found only once, FALSE if it should be found more than once.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -416,6 +425,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -435,6 +445,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -454,6 +465,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -477,6 +489,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -547,6 +560,7 @@ abstract class DrupalTestCase extends TestCase {
    *
    * @param $element
    *   SimpleXMLElement select element.
+   *
    * @return
    *   The selected value or FALSE.
    */
@@ -608,6 +622,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -626,6 +641,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -644,6 +660,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -662,6 +679,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -676,6 +694,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Id of field to assert.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -691,6 +710,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Id of field to assert.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -708,6 +728,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Option to assert.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    *
@@ -727,6 +748,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Option to assert.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -744,6 +766,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -760,6 +783,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -781,6 +805,7 @@ abstract class DrupalTestCase extends TestCase {
    *   it should add a "todo" comment above the call to this function explaining
    *   the legacy bug that the test wishes to ignore and including a link to an
    *   issue that is working to fix that legacy bug.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -804,6 +829,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Field attributes.
    * @param $value
    *   Value of field.
+   *
    * @return
    *   XPath for specified values.
    */
@@ -820,6 +846,7 @@ abstract class DrupalTestCase extends TestCase {
    *   of all codes see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   Assertion result.
    */
@@ -928,6 +955,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE if the assertion succeeded, FALSE otherwise.
    */
@@ -948,6 +976,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE if the assertion succeeded, FALSE otherwise.
    */
@@ -1006,6 +1035,7 @@ abstract class DrupalTestCase extends TestCase {
    *
    * @param $length
    *   Length of random string to generate.
+   *
    * @return
    *   Randomly generated string.
    */
@@ -1028,6 +1058,7 @@ abstract class DrupalTestCase extends TestCase {
    *
    * @param $length
    *   Length of random string to generate.
+   *
    * @return
    *   Randomly generated string.
    */
@@ -1099,6 +1130,7 @@ abstract class DrupalTestCase extends TestCase {
    *
    * @param $permissions
    *   Array of permission names to assign to user.
+   *
    * @return
    *   A fully loaded user object with pass_raw property, or FALSE if account
    *   creation fails.
@@ -1136,6 +1168,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Array of permission names to assign to role.
    * @param $name
    *   (optional) String for the name of the role.  Defaults to a random string.
+   *
    * @return
    *   Role ID of newly created role, or FALSE if role creation failed.
    */
@@ -1177,6 +1210,7 @@ abstract class DrupalTestCase extends TestCase {
    * @param $headers
    *   An array containing additional HTTP request headers, each formatted as
    *   "name: value".
+   *
    * @return
    *   The retrieved HTML string, also available as $this->drupalGetContent()
    */
@@ -1419,7 +1453,7 @@ abstract class DrupalTestCase extends TestCase {
    *   $edit = array(...);
    *   $this->drupalPost(NULL, $edit, t('Save'));
    *   @endcode
-   * @param  $edit
+   * @param $edit
    *   Field data in an associative array. Changes the current input fields
    *   (where possible) to the values indicated. A checkbox can be set to
    *   TRUE to be checked and FALSE to be unchecked. Note that when a form
@@ -1428,7 +1462,8 @@ abstract class DrupalTestCase extends TestCase {
    *
    *   Multiple select fields can be set using name[] and setting each of the
    *   possible values. Example:
-   *   @code
+   *
+     * @code
    *   $edit = array();
    *   $edit['name[]'] = array('value1', 'value2');
    *   @endcode
@@ -1562,6 +1597,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Permissions to check.
    * @param $reset
    *   Reset cached available permissions.
+   *
    * @return
    *   TRUE or FALSE depending on whether the permissions are valid.
    */
@@ -1653,6 +1689,7 @@ abstract class DrupalTestCase extends TestCase {
    * @param $settings
    *   An associative array of settings to change from the defaults, keys are
    *   node properties, for example 'title' => 'Hello, world!'.
+   *
    * @return
    *   Created node object.
    */
@@ -1715,6 +1752,7 @@ abstract class DrupalTestCase extends TestCase {
    * @param $settings
    *   An array of settings to change from the defaults.
    *   Example: 'type' => 'foo'.
+   *
    * @return
    *   Created content type.
    */
@@ -1773,6 +1811,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Text between the anchor tags.
    * @param $index
    *   Link position counting from zero.
+   *
    * @return
    *   Page on success, or FALSE on failure.
    */
@@ -1797,6 +1836,7 @@ abstract class DrupalTestCase extends TestCase {
    *
    * @param $path
    *   A path from the internal browser content.
+   *
    * @return
    *   The $path with $base_url prepended, if necessary.
    */
@@ -1842,6 +1882,7 @@ abstract class DrupalTestCase extends TestCase {
    * @param $all_requests
    *   Boolean value specifying whether to return headers from all requests
    *   instead of just the last request. Defaults to FALSE.
+   *
    * @return
    *   A name/value array if headers from only the last request are requested.
    *   If headers from all requests are requested, an array of name/value
@@ -1895,6 +1936,7 @@ abstract class DrupalTestCase extends TestCase {
    * @param $all_requests
    *   Boolean value specifying whether to check all requests if the header is
    *   not found in the last request. Defaults to FALSE.
+   *
    * @return
    *   The HTTP header value or FALSE if not found.
    */
@@ -1937,6 +1979,7 @@ abstract class DrupalTestCase extends TestCase {
    *
    * @param $filter
    *   An array containing key/value pairs used to filter the e-mails that are returned.
+   *
    * @return
    *   An array containing e-mail messages captured during the current test.
    */
@@ -1988,6 +2031,7 @@ abstract class DrupalTestCase extends TestCase {
    * @param $headers
    *   An array containing additional HTTP request headers, each formatted as
    *   "name: value".
+   *
    * @return
    *   The retrieved headers, also available as $this->drupalGetContent()
    */
@@ -2011,6 +2055,7 @@ abstract class DrupalTestCase extends TestCase {
    *   Form submit button value.
    * @param $form
    *   Array of form elements.
+   *
    * @return
    *   Submit value matches a valid submit input in the form.
    */
@@ -2160,6 +2205,7 @@ abstract class DrupalTestCase extends TestCase {
    *   An array of arguments with keys in the form ':name' matching the
    *   placeholders in the query. The values may be either strings or numeric
    *   values.
+   *
    * @return
    *   An XPath query with arguments replaced.
    */
@@ -2192,6 +2238,7 @@ abstract class DrupalTestCase extends TestCase {
    *
    * @param $xpath
    *   The xpath string to use in the search.
+   *
    * @return
    *   The return value of the xpath search. For details on the xpath string
    *   format and return values see the SimpleXML documentation,
@@ -2216,6 +2263,7 @@ abstract class DrupalTestCase extends TestCase {
    *
    * @param $element
    *   The element for which to get the options.
+   *
    * @return
    *   Option elements in select.
    */

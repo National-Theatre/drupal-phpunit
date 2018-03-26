@@ -5,7 +5,7 @@ namespace NT\Drupal\Testing\PHPUnit;
 use Behat\Mink\Driver\Selenium2Driver;
 
 /**
- * Description of bbpa_mink_drupal_test_case
+ * Description of bbpa_mink_drupal_test_case.
  */
 abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
@@ -183,7 +183,8 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
   /**
      * #edit-bbpa-item-grouping-und-none, #edit-bbpa-item-grouping-und-fnt-video, #edit-bbpa-item-grouping-und-fnt-also
-     * #edit-bbpa-item-grouping-und-browse, #edit-bbpa-item-grouping-und-featured-cont
+     * #edit-bbpa-item-grouping-und-browse, #edit-bbpa-item-grouping-und-featured-cont.
+   *
      * @param array $config
      */
   protected function loadFeaturedItem(array $config) {

@@ -10,7 +10,7 @@ abstract class DrupalUnitTestCase extends DrupalTestCase {
   /** @var int Current drupal run time level */
   protected $drupal_level;
 
-  function setUp($bootstrap = DRUPAL_BOOTSTRAP_FULL, $file = UPAL_USE_DB) {
+  public function setUp($bootstrap = DRUPAL_BOOTSTRAP_FULL, $file = UPAL_USE_DB) {
     parent::setUp();
     $this->drupal_level = $bootstrap;
     DrupalTestCase::import_database(DB_DB, $file);

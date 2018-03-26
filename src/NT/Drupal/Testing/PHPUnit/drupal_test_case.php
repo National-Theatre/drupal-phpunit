@@ -211,11 +211,11 @@ abstract class DrupalTestCase extends TestCase {
     return $this->fail('exception: ' . $message, $group);
   }
 
-  function assertEqual($expected, $actual, $msg = NULL) {
+  public function assertEqual($expected, $actual, $msg = NULL) {
     return $this->assertEquals($expected, $actual, $msg);
   }
 
-  function assertIdentical($first, $second, $message = '', $group = 'Other') {
+  public function assertIdentical($first, $second, $message = '', $group = 'Other') {
     return $this->assertSame($first, $second, $message);
   }
 
@@ -1101,7 +1101,7 @@ abstract class DrupalTestCase extends TestCase {
     return $all_permutations;
   }
 
-  function verbose($message) {
+  public function verbose($message) {
     if (strlen($message) < 500) {
       // $this->log($message, 'verbose');
     }
@@ -2331,7 +2331,7 @@ abstract class DrupalTestCase extends TestCase {
    *     - verbose
    *     - debug
    */
-  function log($message, $type = 'notice') {
+  public function log($message, $type = 'notice') {
     $line = "\nLog: $message\n";
     switch ($this->log_level()) {
       case 'verbose':
@@ -2346,7 +2346,7 @@ abstract class DrupalTestCase extends TestCase {
     }
   }
 
-  function log_level() {
+  public function log_level() {
     if (in_array('--debug', $_SERVER['argv'])) {
       return 'debug';
     }
@@ -2355,7 +2355,7 @@ abstract class DrupalTestCase extends TestCase {
     }
   }
 
-  function directory_cache($subdir = '') {
+  public function directory_cache($subdir = '') {
     return getenv('CACHE_PREFIX') . '/' . $subdir;
   }
 

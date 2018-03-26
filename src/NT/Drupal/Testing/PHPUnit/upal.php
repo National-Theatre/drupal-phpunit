@@ -41,16 +41,12 @@ class upal {
     if (!defined('UPAL_ROOT')) {
       define('UPAL_ROOT', getenv('UPAL_ROOT') ? getenv('UPAL_ROOT') : (isset($GLOBALS['UPAL_ROOT']) ? $GLOBALS['UPAL_ROOT'] : realpath('.')));
     }
-    //chdir(UPAL_ROOT);
-
     // The URL that browser based tests should use.
     if (!defined('UPAL_WEB_URL')) {
       define('UPAL_WEB_URL', getenv('UPAL_WEB_URL') ? getenv('UPAL_WEB_URL') : (isset($GLOBALS['UPAL_WEB_URL']) ? $GLOBALS['UPAL_WEB_URL'] : 'http://upal'));
     }
 
     define('UPAL_TMP', getenv('UPAL_TMP') ? getenv('UPAL_TMP') : (isset($GLOBALS['UPAL_TMP']) ? $GLOBALS['UPAL_TMP'] : sys_get_temp_dir()));
-    // define('UNISH_SANDBOX', UNISH_TMP . '/drush-sandbox');
-
     // Cache dir lives outside the sandbox so that we get persistence across classes.
     $cache = UPAL_TMP . '/upal-cache';
     putenv("CACHE_PREFIX=" . $cache);

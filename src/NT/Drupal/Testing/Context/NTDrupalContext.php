@@ -20,7 +20,7 @@ class NTDrupalContext extends DrupalContext {
    *   context parameters (set them up through behat.yml)
    */
   public function __construct(array $parameters) {
-    // Initialize your context here
+    // Initialize your context here.
     if (!defined('UPAL_ROOT')) {
       define('UPAL_ROOT', $parameters['UPAL_ROOT']);
     }

@@ -99,7 +99,6 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
     // Reset cached schema for new database prefix. This must be done before
     // drupal_flush_all_caches() so rebuilds can make use of the schema of
     // modules enabled on the cURL side.
-
     $connection_info = \Database::getConnectionInfo('default');
     \Database::removeConnection('default');
     $connection_info['default']['prefix'] = $this->prefix . '_';

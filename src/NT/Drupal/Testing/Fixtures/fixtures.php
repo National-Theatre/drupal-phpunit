@@ -92,7 +92,6 @@ abstract class fixtures {
       unset($node->vid);
       unset($node->path);
       $node->path['pathauto'] = 1;
-      //var_dump($node->type);
       $this->dependanices($node);
       node_save($node);
       return $node->nid;

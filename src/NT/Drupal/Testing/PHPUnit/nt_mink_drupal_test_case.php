@@ -81,7 +81,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $el = $page->find('css', '#edit-submit');
     $el->press();
 
-    $this->getSession()->wait(3000); // wait a 3 second
+    $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
   protected function loadTheatre(array $config) {
@@ -107,7 +107,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $el = $page->find('css', '#edit-submit');
     $el->press();
 
-    $this->getSession()->wait(3000); // wait a 3 second
+    $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
   protected function loadCompany(array $config) {
@@ -128,7 +128,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $el = $page->find('css', '#edit-submit');
     $el->press();
 
-    $this->getSession()->wait(3000); // wait a 3 second
+    $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
 
@@ -181,7 +181,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $el = $page->find('css', '#edit-submit');
     $el->press();
 
-    $this->getSession()->wait(3000); // wait a 3 second
+    $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
 
@@ -226,7 +226,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $el = $page->find('css', '#edit-submit');
     $el->press();
 
-    $this->getSession()->wait(3000); // wait a 3 second
+    $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
   protected function loadArticle(array $config) {
@@ -260,7 +260,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $el = $page->find('css', '#edit-submit');
     $el->press();
 
-    $this->getSession()->wait(3000); // wait a 3 second
+    $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
   protected function loadImage(array $config) {
@@ -294,7 +294,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $el = $page->find('css', '#edit-submit');
     $el->press();
 
-    $this->getSession()->wait(3000, "$('.messages.status').length > 0"); // wait a 3 second
+    $this->getSession()->wait(3000, "$('.messages.status').length > 0"); // Wait a 3 second.
   }
 
   protected function loadVideo(array $config) {
@@ -336,7 +336,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $el = $page->find('css', '#edit-submit');
     $el->press();
 
-    $this->getSession()->wait(3000); // wait a 3 second
+    $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
 
@@ -364,7 +364,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $el->setValue('test1234');
     $el = $page->find('css', '#edit-submit');
     $el->press();
-    $this->getSession()->wait(3000); // wait a 3 second
+    $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
 }

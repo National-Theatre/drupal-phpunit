@@ -175,19 +175,6 @@ abstract class DrupalTestCase extends TestCase {
     return $this->assertTrue(TRUE, $message, $group);
   }
 
-  /**
-   * Fire an assertion that is always negative.
-   *
-   * @param $message
-   *   The message to display along with the assertion.
-   * @param $group
-   *   The type of assertion - examples are "Browser", "PHP".
-   * @return
-   *   FALSE.
-   */
-  //protected function fail($message = NULL, $group = 'Other') {
-  //  return $this->assertTrue(FALSE, $message, $group);
-  //}
 
   /**
    * Fire an error assertion.
@@ -1102,9 +1089,6 @@ abstract class DrupalTestCase extends TestCase {
   }
 
   public function verbose($message) {
-    if (strlen($message) < 500) {
-      // $this->log($message, 'verbose');
-    }
   }
 
   /**
@@ -1247,9 +1231,9 @@ abstract class DrupalTestCase extends TestCase {
     }
     // We set the user agent header on each request so as to use the current
     // time and a new uniqid.
-    //if (preg_match('/simpletest\d+/', $this->databasePrefix, $matches)) {
+    // if (preg_match('/simpletest\d+/', $this->databasePrefix, $matches)) {
     //  curl_setopt($this->curlHandle, CURLOPT_USERAGENT, drupal_generate_test_ua($matches[0]));
-    //}
+    // }
   }
 
   /**
@@ -1639,7 +1623,7 @@ abstract class DrupalTestCase extends TestCase {
     $pass = $this->assertLink(t('Log out'), 0, t('User %name successfully logged in.', array('%name' => $user->name)), t('User login'));
 
     if (1 || $pass) {
-      // TODO: declare this var
+      // @todo: declare this var.
       $this->loggedInUser = $user;
     }
   }
@@ -2401,8 +2385,4 @@ abstract class DrupalTestCase extends TestCase {
     exec($cmd, $output, $return);
     print 'Import finished took:' . (time() - $time) . "sec\n\n";
   }
-  //  function db_url($env) {
-  //    return substr(UPAL_DB_URL, 0, 6) == 'sqlite'  ?  "sqlite://sites/$env/files/unish.sqlite" : UPAL_DB_URL . '/unish_' . $env;
-  //  }
-
 }

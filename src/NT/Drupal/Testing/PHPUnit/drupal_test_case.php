@@ -28,10 +28,10 @@ use PHPUnit\Framework\TestResult;
 
 /**
  *
- *@todo: Perhaps move these annotations down to the instance classes and tests.
+ * @todo: Perhaps move these annotations down to the instance classes and tests.
  *
- *@runTestsInSeparateProcess
- *@preserveGlobalState disabled
+ * @runTestsInSeparateProcess
+ * @preserveGlobalState disabled
  */
 abstract class DrupalTestCase extends TestCase {
 
@@ -1444,7 +1444,7 @@ abstract class DrupalTestCase extends TestCase {
    *   NULL to post to the current page. For multi-stage forms you can set the
    *   path to NULL and have it post to the last received page. Example:
    *
-   *   @code
+   * @code
    *   // First step in form.
    *   $edit = array(...);
    *   $this->drupalPost('some_url', $edit, t('Save'));
@@ -1452,7 +1452,7 @@ abstract class DrupalTestCase extends TestCase {
    *   // Second step in form.
    *   $edit = array(...);
    *   $this->drupalPost(NULL, $edit, t('Save'));
-   *   @endcode
+   * @endcode
    * @param $edit
    *   Field data in an associative array. Changes the current input fields
    *   (where possible) to the values indicated. A checkbox can be set to
@@ -1463,10 +1463,10 @@ abstract class DrupalTestCase extends TestCase {
    *   Multiple select fields can be set using name[] and setting each of the
    *   possible values. Example:
    *
-     * @code
+   * @code
    *   $edit = array();
    *   $edit['name[]'] = array('value1', 'value2');
-   *   @endcode
+   * @endcode
    * @param $submit
    *   Value of the submit button whose click is to be emulated. For example,
    *   t('Save'). The processing of the request depends on this value. For

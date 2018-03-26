@@ -6,8 +6,7 @@ namespace NT\Drupal\Testing\PHPUnit;
  *
  */
 abstract class DrupalUnitTestCase extends DrupalTestCase {
-  /**
- * @var int Current drupal run time level */
+  /* @var int Current drupal run time level */
   protected $drupal_level;
 
   public function setUp($bootstrap = DRUPAL_BOOTSTRAP_FULL, $file = UPAL_USE_DB) {

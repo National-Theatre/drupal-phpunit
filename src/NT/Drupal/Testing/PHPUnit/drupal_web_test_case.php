@@ -15,7 +15,7 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
   public function setUp() {
     parent::setUp();
 
-    \PHPUnit_Framework_Error_Warning::$enabled = FALSE;
+    \PHPUnit\Framework\Error\Warning::$enabled = FALSE;
 
     if (!defined('DRUPAL_ROOT')) {
       define('DRUPAL_ROOT', UPAL_ROOT);
@@ -77,15 +77,16 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
       exec($cmd, $output, $return);
       print 'Import finished took:' . (time() - $time) . "sec\n\n";
     } else {
-      // Assure that we start with an empty database. Will create one if needed.
-      $cmd = sprintf(
-            '%s site-install --uri=%s --db-url=%s --sites-subdir=upal --root=%s --account-pass=test1234 -y minimal',
+        // Assure that we start with an empty database. Will create one if needed.
+        $cmd = sprintf(
+            '%s site-install --uri=%s --db-url=%s --sites-subdir=upal --root=%s --account-pass=%s -y minimal',
             UNISH_DRUSH,
             UPAL_WEB_URL,
             UPAL_DB_URL,
-            UPAL_ROOT
+            UPAL_ROOT,
+            ADMIN_PASS
         );
-      exec($cmd, $output, $return);
+        exec($cmd, $output, $return);
     }
     $files_dir = "$site/files";
     if (file_exists($files_dir)) {

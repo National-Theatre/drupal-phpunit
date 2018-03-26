@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  @copyright The Royal National Theatre
  *  @author John-Paul Drawneek <jpd4nt@users.noreply.github.com>
@@ -27,64 +28,62 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
     }
     $this->prefix = PREFIX . '_' . time();
     if(UPAL_USE_DB) {
-        if(!file_exists($site)) {
-            mkdir($site);
-        }
-        if(!file_exists($files_dir)) {
-            mkdir($files_dir);
-        }
+      if(!file_exists($site)) {
+        mkdir($site);
+      }
+      if(!file_exists($files_dir)) {
+        mkdir($files_dir);
+      }
 
-        $include_path = realpath(
+      $include_path = realpath(
           dirname(__FILE__) . '/../../../../../../../../includes/'
         );
 
-        if(!file_exists($site . '/settings.php')) {
-          $settings = file_get_contents(
-            $include_path . '/settings.php'
-          );
-          $settings = sprintf($settings, $this->prefix);
-          file_put_contents($site . '/settings.php', $settings);
-          unset($settings);
-        }
+      if(!file_exists($site . '/settings.php')) {
+        $settings = file_get_contents(
+        $include_path . '/settings.php'
+        );
+        $settings = sprintf($settings, $this->prefix);
+        file_put_contents($site . '/settings.php', $settings);
+        unset($settings);
+      }
 
-        // Copy modules to test env.
-        if (defined('COPY_MODULES') && COPY_MODULES) {
-          symlink(
-            DRUPAL_ROOT . '/sites/' . COPY_MODULES,
-            DRUPAL_ROOT . '/sites/upal/modules'
-          );
-        }
+      // Copy modules to test env.
+      if (defined('COPY_MODULES') && COPY_MODULES) {
+        symlink(
+        DRUPAL_ROOT . '/sites/' . COPY_MODULES,
+        DRUPAL_ROOT . '/sites/upal/modules'
+        );
+      }
 
-        $sql_tmpl = fopen($include_path . DIRECTORY_SEPARATOR . UPAL_USE_DB, "r");
-        $sql_tmpl_fix  = fopen($include_path . DIRECTORY_SEPARATOR . $this->prefix .'.sql', 'w');
-        while(($buffer = fgets($sql_tmpl)) !== FALSE) {
-          $buffer = str_replace('${prefix}', $this->prefix, $buffer);
-          fwrite($sql_tmpl_fix, $buffer);
-        }
-        fclose($sql_tmpl);
-        fclose($sql_tmpl_fix);
-        $cmd = sprintf(
+      $sql_tmpl = fopen($include_path . DIRECTORY_SEPARATOR . UPAL_USE_DB, "r");
+      $sql_tmpl_fix  = fopen($include_path . DIRECTORY_SEPARATOR . $this->prefix .'.sql', 'w');
+      while(($buffer = fgets($sql_tmpl)) !== FALSE) {
+        $buffer = str_replace('${prefix}', $this->prefix, $buffer);
+        fwrite($sql_tmpl_fix, $buffer);
+      }
+      fclose($sql_tmpl);
+      fclose($sql_tmpl_fix);
+      $cmd = sprintf(
             '`%s sql-connect --uri=%s --root=%s` < %s',
             UNISH_DRUSH,
             UPAL_WEB_URL,
             UPAL_ROOT,
             $include_path . DIRECTORY_SEPARATOR . $this->prefix .'.sql'
         );
-        $time = time();
-        exec($cmd, $output, $return);
-        print 'Import finished took:' . (time() - $time) . "sec\n\n";
+      $time = time();
+      exec($cmd, $output, $return);
+      print 'Import finished took:' . (time() - $time) . "sec\n\n";
     } else {
-        // Assure that we start with an empty database. Will create one if needed.
-        $cmd = sprintf(
+      // Assure that we start with an empty database. Will create one if needed.
+      $cmd = sprintf(
             '%s site-install --uri=%s --db-url=%s --sites-subdir=upal --root=%s --account-pass=test1234 -y minimal',
             UNISH_DRUSH,
             UPAL_WEB_URL,
             UPAL_DB_URL,
             UPAL_ROOT
         );
-        // Debug code
-//        print "$cmd\n\n";
-        exec($cmd, $output, $return);
+      exec($cmd, $output, $return);
     }
     $files_dir = "$site/files";
     if (file_exists($files_dir)) {
@@ -143,26 +142,24 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
     fixture_helper::clear();
   }
 
-    public function runCron() {
-        $cmd = sprintf(
-            '%s cron --root=%s --uri=%s',
-            UNISH_DRUSH,
-            UPAL_ROOT,
-            UPAL_WEB_URL
-        );
-        // Debug code
-//        print "$cmd\n\n";
-        exec($cmd, $output, $return);
-    }
+  public function runCron() {
+    $cmd = sprintf(
+        '%s cron --root=%s --uri=%s',
+        UNISH_DRUSH,
+        UPAL_ROOT,
+        UPAL_WEB_URL
+    );
+    exec($cmd, $output, $return);
+  }
 
-    public function dropCache() {
-      $cmd = sprintf(
-          '%s cache-clear all --root=%s --uri=%s',
-          UNISH_DRUSH,
-          UPAL_ROOT,
-          UPAL_WEB_URL
-      );
-      exec($cmd, $output, $return);
-    }
+  public function dropCache() {
+    $cmd = sprintf(
+      '%s cache-clear all --root=%s --uri=%s',
+      UNISH_DRUSH,
+      UPAL_ROOT,
+      UPAL_WEB_URL
+    );
+    exec($cmd, $output, $return);
+  }
 
 }

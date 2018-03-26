@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @file
  *   Test Framework for Drupal based on PHPUnit.
@@ -894,7 +895,7 @@ abstract class DrupalTestCase extends TestCase {
   protected function assertMailString($field_name, $string, $email_depth) {
     $mails = $this->drupalGetMails();
     $string_found = FALSE;
-    for ($i = sizeof($mails) -1; $i >= sizeof($mails) - $email_depth && $i >= 0; $i--) {
+    for ($i = sizeof($mails) - 1; $i >= sizeof($mails) - $email_depth && $i >= 0; $i--) {
       $mail = $mails[$i];
       // Normalize whitespace, as we don't know what the mail system might have
       // done. Any run of whitespace becomes a single space.
@@ -943,7 +944,7 @@ abstract class DrupalTestCase extends TestCase {
    */
   protected function assertLink($label, $index = 0, $message = '', $group = 'Other') {
     $links = $this->xpath('//a[normalize-space(text())=:label]', array(':label' => $label));
-    $message = ($message ?  $message : t('Link with label %label found.', array('%label' => $label)));
+    $message = ($message ? $message : t('Link with label %label found.', array('%label' => $label)));
     return $this->assertTrue(isset($links[$index]), $message, $group);
   }
 
@@ -963,7 +964,7 @@ abstract class DrupalTestCase extends TestCase {
    */
   protected function assertNoLink($label, $message = '', $group = 'Other') {
     $links = $this->xpath('//a[normalize-space(text())=:label]', array(':label' => $label));
-    $message = ($message ?  $message : t('Link with label %label not found.', array('%label' => $label)));
+    $message = ($message ? $message : t('Link with label %label not found.', array('%label' => $label)));
     return $this->assertTrue(empty($links), $message, $group);
   }
 
@@ -984,7 +985,7 @@ abstract class DrupalTestCase extends TestCase {
    */
   protected function assertLinkByHref($href, $index = 0, $message = '', $group = 'Other') {
     $links = $this->xpath('//a[contains(@href, :href)]', array(':href' => $href));
-    $message = ($message ?  $message : t('Link containing href %href found.', array('%href' => $href)));
+    $message = ($message ? $message : t('Link containing href %href found.', array('%href' => $href)));
     return $this->assertTrue(isset($links[$index]), $message, $group);
   }
 
@@ -1003,7 +1004,7 @@ abstract class DrupalTestCase extends TestCase {
    */
   protected function assertNoLinkByHref($href, $message = '', $group = 'Other') {
     $links = $this->xpath('//a[contains(@href, :href)]', array(':href' => $href));
-    $message = ($message ?  $message : t('No link containing href %href found.', array('%href' => $href)));
+    $message = ($message ? $message : t('No link containing href %href found.', array('%href' => $href)));
     return $this->assertTrue(empty($links), $message, $group);
   }
 
@@ -2321,15 +2322,15 @@ abstract class DrupalTestCase extends TestCase {
 
 
   /*
-  *Print a log message to the console.
-  *
-  * @param string $message
-  * @param string $type
-  *   Supported types are:
-  *     - notice
-  *     - verbose
-  *     - debug
-  */
+   *Print a log message to the console.
+   *
+   * @param string $message
+   * @param string $type
+   *   Supported types are:
+   *     - notice
+   *     - verbose
+   *     - debug
+   */
   function log($message, $type = 'notice') {
     $line = "\nLog: $message\n";
     switch ($this->log_level()) {
@@ -2400,8 +2401,8 @@ abstract class DrupalTestCase extends TestCase {
     exec($cmd, $output, $return);
     print 'Import finished took:' . (time() - $time) . "sec\n\n";
   }
-//  function db_url($env) {
-//    return substr(UPAL_DB_URL, 0, 6) == 'sqlite'  ?  "sqlite://sites/$env/files/unish.sqlite" : UPAL_DB_URL . '/unish_' . $env;
-//  }
+  //  function db_url($env) {
+  //    return substr(UPAL_DB_URL, 0, 6) == 'sqlite'  ?  "sqlite://sites/$env/files/unish.sqlite" : UPAL_DB_URL . '/unish_' . $env;
+  //  }
 
- }
+}

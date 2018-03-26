@@ -1,4 +1,5 @@
 <?php
+
 /**
  *  @copyright The Royal National Theatre
  *  @author John-Paul Drawneek <jpd4nt@users.noreply.github.com>
@@ -194,13 +195,13 @@ abstract class fixtures {
 
   protected function install_nt_image($data) {
     $data += array(
-      'title'               =>'image_' . time(),
-      'nt_display_title'    =>'',
-      'nt_image_image'      =>'',
+      'title'               => 'image_' . time(),
+      'nt_display_title'    => '',
+      'nt_image_image'      => '',
       'image_title'         => '',
       'image_alt'           => '',
-      'body'                =>'',
-      'nt_credits'          =>'',
+      'body'                => '',
+      'nt_credits'          => '',
       'nt_tags'             => array(),
       'nt_image_production' => NULL,
       'nt_archive_code'     => NULL,
@@ -274,7 +275,6 @@ abstract class fixtures {
 
   protected function multi_media_ref($data) {
     $output = array();
-//    var_dump($data);
     foreach ($data as $item) {
       if (isset($item['nid'])) {
         $output[] = array('nid' => $item['nid']);
@@ -309,7 +309,6 @@ abstract class fixtures {
 
   protected function multi_video($data) {
     $output = array();
-//    var_dump($data);
     foreach ($data as $item) {
       if (isset($item['nid'])) {
         $output[] = array('nid' => $item['nid']);

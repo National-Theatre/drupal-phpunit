@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright The Royal National Theatre
  * @author John-Paul Drawneek <jpd4nt@users.noreply.github.com>
@@ -35,32 +36,6 @@ class fixture_helper {
       else {
         $ob_str = $classPath;
       }
-//      if (file_exists(realpath(__DIR__ . '/../fixtures/Fixtures/') . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $class . '.php')) {
-//        require_once realpath(__DIR__ . '/../fixtures/Fixtures/') . DIRECTORY_SEPARATOR . $type . DIRECTORY_SEPARATOR . $class . '.php';
-//        $ob_str = 'NT\\Test\\Fixtures\\' . $type . '\\' . $class;
-//      }
-//      elseif(file_exists(realpath(__DIR__ . '/../fixtures/Fixtures/Venue/') . DIRECTORY_SEPARATOR . $class . '.php')) {
-//        require_once realpath(__DIR__ . '/../fixtures/Fixtures/Venue/') . DIRECTORY_SEPARATOR . $class . '.php';
-//        $ob_str = 'NT\\Test\\Fixtures\\Venue\\' . $class;
-//      }
-//      elseif(file_exists(realpath(__DIR__ . '/../fixtures/Fixtures/Image/') . DIRECTORY_SEPARATOR . $class . '.php')) {
-//        require_once realpath(__DIR__ . '/../fixtures/Fixtures/Image/') . DIRECTORY_SEPARATOR . $class . '.php';
-//        $ob_str = 'NT\\Test\\Fixtures\\Image\\' . $class;
-//      }
-//      elseif(file_exists(realpath(__DIR__ . '/../fixtures/Fixtures/Production/') . DIRECTORY_SEPARATOR . $class . '.php')) {
-//        require_once realpath(__DIR__ . '/../fixtures/Fixtures/Production/') . DIRECTORY_SEPARATOR . $class . '.php';
-//        $ob_str = 'NT\\Test\\Fixtures\\Production\\' . $class;
-//      }
-//      elseif(file_exists(realpath(__DIR__ . '/../fixtures/Fixtures/NT_Twitter/') . DIRECTORY_SEPARATOR . $class . '.php')) {
-//        require_once realpath(__DIR__ . '/../fixtures/Fixtures/NT_Twitter/') . DIRECTORY_SEPARATOR . $class . '.php';
-//        $ob_str = 'NT\\Test\\Fixtures\\NT_Twitter\\' . $class;
-//      }
-//      else {
-//        throw new Exception(
-//          'Panic!: ' . print_r($fixture, TRUE) . ' - ' . print_r($class , TRUE)
-//          . ' hello!'
-//        );
-//      }
 
       $helper = fixture_helper::getInstance();
 

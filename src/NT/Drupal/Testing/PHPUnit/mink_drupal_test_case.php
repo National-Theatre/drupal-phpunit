@@ -33,111 +33,89 @@ use Behat\SahiClient\Connection as SahiConnection,
  * @author      Konstantin Kudryashov <ever.zet@gmail.com>
  */
 abstract class MinkDrupalTestCase extends DrupalWebTestCase {
-    /**
+  /**
      * Mink instance.
      *
      * @var     Behat\Mink\Mink
      */
-    private static $minkTestCaseMinkInstance;
+  private static $minkTestCaseMinkInstance;
 
-    /**
+  /**
      * Initializes mink instance.
      */
-    public static function setUpBeforeClass()
+  public static function setUpBeforeClass()
     {
-        self::$minkTestCaseMinkInstance = new Mink();
-        static::registerMinkSessions(self::$minkTestCaseMinkInstance);
-    }
+    self::$minkTestCaseMinkInstance = new Mink();
+    static::registerMinkSessions(self::$minkTestCaseMinkInstance);
+  }
 
-    /**
+  /**
      * Destroys mink instance.
      */
-    public static function tearDownAfterClass()
+  public static function tearDownAfterClass()
     {
-        if (null !== self::$minkTestCaseMinkInstance) {
-            self::$minkTestCaseMinkInstance->stopSessions();
-            self::$minkTestCaseMinkInstance = null;
-        }
+    if (null !== self::$minkTestCaseMinkInstance) {
+      self::$minkTestCaseMinkInstance->stopSessions();
+      self::$minkTestCaseMinkInstance = null;
     }
+  }
 
-    /**
+  /**
      * Reset started sessions.
      */
-    protected function tearDown()
+  protected function tearDown()
     {
-      //$this->getMink()->getSession()->stop();
-      //$this->getMink()->resetSessions();
-      parent::tearDown();
-    }
+    parent::tearDown();
+  }
 
-    /**
+  /**
      * Returns Mink instance.
      *
      * @return  Behat\Mink\Mink
      */
-    public function getMink()
+  public function getMink()
     {
-        if (null === self::$minkTestCaseMinkInstance) {
-            throw new \RuntimeException(
-                'Mink is not initialized. Forgot to call parent context setUpBeforeClass()?'
-            );
-        }
-
-        return self::$minkTestCaseMinkInstance;
+    if (null === self::$minkTestCaseMinkInstance) {
+      throw new \RuntimeException(
+        'Mink is not initialized. Forgot to call parent context setUpBeforeClass()?'
+      );
     }
 
-    /**
+    return self::$minkTestCaseMinkInstance;
+  }
+
+  /**
      * Returns current Mink session.
      *
      * @param   string|null name of the session OR active session will be used
      *
      * @return  Behat\Mink\Session
      */
-    public function getSession($name = null)
+  public function getSession($name = null)
     {
-        return $this->getMink()->getSession($name);
-    }
+    return $this->getMink()->getSession($name);
+  }
 
-    public function takeScreenShot($path, $file = NULL) {
-      if (!isset($file)) {
-        $file = $this->prefix . '_image.jpg';
-      }
-      $driver = $this->getSession()->getDriver();
-      if ($driver instanceof Selenium2Driver) {
-        $imageData = base64_decode($this->getSession()->getDriver()->wdSession->screenshot());
-        file_put_contents($path . DIRECTORY_SEPARATOR . $file, $imageData);
-      }
+  public function takeScreenShot($path, $file = NULL) {
+    if (!isset($file)) {
+      $file = $this->prefix . '_image.jpg';
     }
-    /**
+    $driver = $this->getSession()->getDriver();
+    if ($driver instanceof Selenium2Driver) {
+      $imageData = base64_decode($this->getSession()->getDriver()->wdSession->screenshot());
+      file_put_contents($path . DIRECTORY_SEPARATOR . $file, $imageData);
+    }
+  }
+  /**
      * Registers Mink sessions on it's initialization.
      *
      * @param   Behat\Mink\Mink     $mink   Mink manager instance
      */
-    protected static function registerMinkSessions(Mink $mink)
+  protected static function registerMinkSessions(Mink $mink)
     {
-//        if (!$mink->hasSession('goutte')) {
-//            $mink->registerSession('goutte', static::initGoutteSession());
-//            $mink->setDefaultSessionName('goutte');
-//        }
-//
-//        if (!$mink->hasSession('sahi')) {
-//            $mink->registerSession('sahi', static::initSahiSession());
-//        }
-//
-//        if (!$mink->hasSession('zombie')) {
-//            $mink->registerSession('zombie', static::initZombieSession());
-//        }
-//
-//        if (!$mink->hasSession('selenium')) {
-//            $mink->registerSession('selenium', static::initSeleniumSession());
-//        }
-//
-//        if (!$mink->hasSession('webdriver')) {
-//            $mink->registerSession('webdriver', static::initWebdriverSession());
-//        }
-    }
+  }
 
-    /**
+  /**
      * Initizalizes and returns new GoutteDriver session.
      *
      * @param   array   $zendConfig         zend config parameters
@@ -145,14 +123,14 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
      *
      * @return  Behat\Mink\Session
      */
-    protected static function initGoutteSession(array $zendConfig = array(), array $serverParameters = array())
+  protected static function initGoutteSession(array $zendConfig = array(), array $serverParameters = array())
     {
-        $zendConfig = array_merge(array('encodecookies' => false), $zendConfig);
+    $zendConfig = array_merge(array('encodecookies' => false), $zendConfig);
 
-        return new Session(new GoutteDriver(new GoutteClient($zendConfig, $serverParameters)));
-    }
+    return new Session(new GoutteDriver(new GoutteClient($zendConfig, $serverParameters)));
+  }
 
-    /**
+  /**
      * Initizalizes and returns new SahiDriver session.
      *
      * @param   string  $browser    browser name to use (default = firefox)
@@ -162,12 +140,12 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
      *
      * @return  Behat\Mink\Session
      */
-    protected static function initSahiSession($browser = 'firefox', $sid = null, $host = 'localhost', $port = 9999)
+  protected static function initSahiSession($browser = 'firefox', $sid = null, $host = 'localhost', $port = 9999)
     {
-        return new Session(new SahiDriver($browser, new SahiClient(new SahiConnection($sid, $host, $port))));
-    }
+    return new Session(new SahiDriver($browser, new SahiClient(new SahiConnection($sid, $host, $port))));
+  }
 
-    /**
+  /**
      * Initizalizes and returns new ZombieDriver session.
      *
      * @param   string  $host           zombie.js server host
@@ -177,16 +155,16 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
      *
      * @return  Behat\Mink\Session
      */
-    protected static function initZombieSession($host = '127.0.0.1', $port = 8124,
+  protected static function initZombieSession($host = '127.0.0.1', $port = 8124,
                                                 $autoServer = true, $nodeBin = 'node')
     {
-        $connection = new ZombieConnection($host, $port);
-        $server     = $autoServer ? new ZombieServer($host, $port, $nodeBin) : null;
+    $connection = new ZombieConnection($host, $port);
+    $server     = $autoServer ? new ZombieServer($host, $port, $nodeBin) : null;
 
-        return new Session(new ZombieDriver($connection, $server, $autoServer));
-    }
+    return new Session(new ZombieDriver($connection, $server, $autoServer));
+  }
 
-    /**
+  /**
      * Initizalizes and returns new SeleniumDriver session.
      *
      * @param   string  $browser        browser info
@@ -196,14 +174,14 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
      *
      * @return  Behat\Mink\Session
      */
-    protected static function initSeleniumSession($browser = '*firefox',
+  protected static function initSeleniumSession($browser = '*firefox',
                                                   $baseUrl = 'http://localhost',
                                                   $host = '127.0.0.1', $port = 4444)
     {
-        return new Session(new SeleniumDriver($browser, $baseUrl, new SeleniumClient($host, $port)));
-    }
+    return new Session(new SeleniumDriver($browser, $baseUrl, new SeleniumClient($host, $port)));
+  }
 
-    /**
+  /**
      * Initizalizes and returns new Selenium2Driver session.
      *
      * @param   string  $browser        browser name
@@ -211,11 +189,11 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
      *
      * @return  Behat\Mink\Session
      */
-    protected static function initWebdriverSession($browser = 'firefox',
+  protected static function initWebdriverSession($browser = 'firefox',
                                                    $desiredCapabilities = NULL,
                                                    $host = 'http://localhost:4444/wd/hub')
     {
-        return new Session(new Selenium2Driver($browser, $desiredCapabilities, $host));
-    }
+    return new Session(new Selenium2Driver($browser, $desiredCapabilities, $host));
+  }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace NT\Drupal\Testing\Context;
 
 use Drupal\DrupalExtension\Context\DrupalContext;

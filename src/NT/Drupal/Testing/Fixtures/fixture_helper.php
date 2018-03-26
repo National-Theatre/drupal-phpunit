@@ -1,6 +1,7 @@
 <?php
 
 namespace NT\Drupal\Testing\Fixtures;
+
 /**
  *
  */

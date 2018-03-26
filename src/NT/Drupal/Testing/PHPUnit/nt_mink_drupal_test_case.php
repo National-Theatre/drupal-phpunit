@@ -1,6 +1,7 @@
 <?php
 
 namespace NT\Drupal\Testing\PHPUnit;
+
 use Behat\Mink\Driver\Selenium2Driver;
 
 /**

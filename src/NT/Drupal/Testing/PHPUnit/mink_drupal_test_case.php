@@ -43,8 +43,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
   /**
    * Initializes mink instance.
    */
-  public static function setUpBeforeClass()
-    {
+  public static function setUpBeforeClass() {
     self::$minkTestCaseMinkInstance = new Mink();
     static::registerMinkSessions(self::$minkTestCaseMinkInstance);
   }
@@ -52,8 +51,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
   /**
    * Destroys mink instance.
    */
-  public static function tearDownAfterClass()
-    {
+  public static function tearDownAfterClass() {
     if (null !== self::$minkTestCaseMinkInstance) {
       self::$minkTestCaseMinkInstance->stopSessions();
       self::$minkTestCaseMinkInstance = null;
@@ -63,8 +61,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
   /**
    * Reset started sessions.
    */
-  protected function tearDown()
-    {
+  protected function tearDown() {
     parent::tearDown();
   }
 
@@ -73,8 +70,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    *
    * @return Behat\Mink\Mink
    */
-  public function getMink()
-    {
+  public function getMink() {
     if (null === self::$minkTestCaseMinkInstance) {
       throw new \RuntimeException(
         'Mink is not initialized. Forgot to call parent context setUpBeforeClass()?'
@@ -91,8 +87,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    *
    * @return Behat\Mink\Session
    */
-  public function getSession($name = null)
-    {
+  public function getSession($name = null) {
     return $this->getMink()->getSession($name);
   }
 
@@ -116,8 +111,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    * @param Behat\Mink\Mink $mink
    *   Mink manager instance.
    */
-  protected static function registerMinkSessions(Mink $mink)
-    {
+  protected static function registerMinkSessions(Mink $mink) {
   }
 
   /**
@@ -130,8 +124,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    *
    * @return Behat\Mink\Session
    */
-  protected static function initGoutteSession(array $zendConfig = array(), array $serverParameters = array())
-    {
+  protected static function initGoutteSession(array $zendConfig = array(), array $serverParameters = array()) {
     $zendConfig = array_merge(array('encodecookies' => false), $zendConfig);
 
     return new Session(new GoutteDriver(new GoutteClient($zendConfig, $serverParameters)));
@@ -147,8 +140,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    *
    * @return Behat\Mink\Session
    */
-  protected static function initSahiSession($browser = 'firefox', $sid = null, $host = 'localhost', $port = 9999)
-    {
+  protected static function initSahiSession($browser = 'firefox', $sid = null, $host = 'localhost', $port = 9999) {
     return new Session(new SahiDriver($browser, new SahiClient(new SahiConnection($sid, $host, $port))));
   }
 
@@ -163,8 +155,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    * @return Behat\Mink\Session
    */
   protected static function initZombieSession($host = '127.0.0.1', $port = 8124,
-                                                $autoServer = true, $nodeBin = 'node')
-    {
+                                                $autoServer = true, $nodeBin = 'node') {
     $connection = new ZombieConnection($host, $port);
     $server     = $autoServer ? new ZombieServer($host, $port, $nodeBin) : null;
 
@@ -183,8 +174,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    */
   protected static function initSeleniumSession($browser = '*firefox',
                                                   $baseUrl = 'http://localhost',
-                                                  $host = '127.0.0.1', $port = 4444)
-    {
+                                                  $host = '127.0.0.1', $port = 4444) {
     return new Session(new SeleniumDriver($browser, $baseUrl, new SeleniumClient($host, $port)));
   }
 
@@ -198,8 +188,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
    */
   protected static function initWebdriverSession($browser = 'firefox',
                                                    $desiredCapabilities = NULL,
-                                                   $host = 'http://localhost:4444/wd/hub')
-    {
+                                                   $host = 'http://localhost:4444/wd/hub') {
     return new Session(new Selenium2Driver($browser, $desiredCapabilities, $host));
   }
 

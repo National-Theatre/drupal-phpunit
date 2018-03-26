@@ -14,8 +14,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
   /**
    *
    */
-  protected function onNotSuccessfulTest(Exception $e)
-    {
+  protected function onNotSuccessfulTest(Exception $e) {
     $driver = $this->getSession()->getDriver();
     if ($driver instanceof Selenium2Driver) {
       $imageData = base64_decode($this->getSession()->getDriver()->wdSession->screenshot());

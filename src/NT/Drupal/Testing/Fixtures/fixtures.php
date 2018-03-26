@@ -3,7 +3,9 @@
  *  @copyright The Royal National Theatre
  *  @author John-Paul Drawneek <jpd4nt@users.noreply.github.com>
  */
+
 namespace NT\Drupal\Testing\Fixtures;
+use NT\Drupal\Testing\PHPUnit\fixture_helper;
 
 abstract class fixtures {
 
@@ -105,10 +107,10 @@ abstract class fixtures {
         $value = $this->install_node($value);
       }
       elseif ($key === 'nid' && !is_numeric($value) && is_string($value)) {
-        $value = \NT\Drupal\Testing\PHPUnit\fixture_helper::setup($value, 'Image');
+        $value = fixture_helper::setup($value, 'Image');
       }
       elseif ($key === 'nid' && !is_numeric($value) && is_array($value)) {
-        $value = \NT\Drupal\Testing\PHPUnit\fixture_helper::setup($value['source'], $value['type']);
+        $value = fixture_helper::setup($value['source'], $value['type']);
       }
       else {
         if (is_array($value)) {
@@ -467,4 +469,5 @@ abstract class fixtures {
 
     return $node;
   }
+
 }

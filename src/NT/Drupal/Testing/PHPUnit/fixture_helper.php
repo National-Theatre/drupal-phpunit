@@ -28,7 +28,7 @@ class fixture_helper {
         $class = str_replace(' ', '', ucwords(strtolower($fixture)));
         $ob_str = 'NT\\Test\\Fixtures\\' . $type . '\\' . $class;
         $helper = fixture_helper::getInstance();
-        $fixture_obj = new $ob_str;
+        $fixture_obj = new $ob_str();
         $helper->add_object($fixture_obj);
         return $fixture_obj->run();
       }
@@ -68,4 +68,5 @@ class fixture_helper {
       }
     }
   }
+
 }

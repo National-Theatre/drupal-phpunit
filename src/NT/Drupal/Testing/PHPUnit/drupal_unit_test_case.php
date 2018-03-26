@@ -51,4 +51,5 @@ abstract class DrupalUnitTestCase extends DrupalTestCase {
     spl_autoload_unregister('drupal_autoload_class');
     spl_autoload_unregister('drupal_autoload_interface');
   }
+
 }

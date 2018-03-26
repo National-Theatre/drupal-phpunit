@@ -2,22 +2,22 @@
 
 namespace NT\Drupal\Testing\PHPUnit;
 
-use Behat\Mink\Mink,
-    Behat\Mink\Session,
-    Behat\Mink\Driver\GoutteDriver,
-    Behat\Mink\Driver\SahiDriver,
-    Behat\Mink\Driver\ZombieDriver,
-    Behat\Mink\Driver\SeleniumDriver,
-    Behat\Mink\Driver\Selenium2Driver,
-    Behat\Mink\Driver\Zombie\Connection as ZombieConnection,
-    Behat\Mink\Driver\Zombie\Server as ZombieServer;
+use Behat\SahiClient\Client;
+use Behat\Mink\Driver\Zombie\Server;
+use Behat\Mink\Driver\Zombie\Connection;
+use Behat\Mink\Driver\Selenium2Driver;
+use Behat\Mink\Driver\SeleniumDriver;
+use Behat\Mink\Driver\ZombieDriver;
+use Behat\Mink\Driver\SahiDriver;
+use Behat\Mink\Driver\GoutteDriver;
+use Behat\Mink\Session;
 
 use Goutte\Client as GoutteClient;
 
 use Selenium\Client as SeleniumClient;
 
 use Behat\SahiClient\Connection as SahiConnection,
-    Behat\SahiClient\Client as SahiClient;
+    Client as SahiClient;
 
 /*
  * This file is part of the Behat\Mink.
@@ -32,8 +32,7 @@ use Behat\SahiClient\Connection as SahiConnection,
  *
  * @author      Konstantin Kudryashov <ever.zet@gmail.com>
  */
-abstract class MinkDrupalTestCase extends DrupalWebTestCase
-{
+abstract class MinkDrupalTestCase extends DrupalWebTestCase {
     /**
      * Mink instance.
      *
@@ -104,7 +103,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase
         $file = $this->prefix . '_image.jpg';
       }
       $driver = $this->getSession()->getDriver();
-      if ($driver instanceof Behat\Mink\Driver\Selenium2Driver) {
+      if ($driver instanceof Selenium2Driver) {
         $imageData = base64_decode($this->getSession()->getDriver()->wdSession->screenshot());
         file_put_contents($path . DIRECTORY_SEPARATOR . $file, $imageData);
       }
@@ -218,4 +217,5 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase
     {
         return new Session(new Selenium2Driver($browser, $desiredCapabilities, $host));
     }
+
 }

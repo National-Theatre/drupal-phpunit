@@ -3,7 +3,9 @@
  *  @copyright The Royal National Theatre
  *  @author John-Paul Drawneek <jpd4nt@users.noreply.github.com>
  */
+
 namespace NT\Drupal\Testing\PHPUnit;
+use Behat\Mink\Driver\Selenium2Driver;
 
 /**
  * Description of bbpa_mink_drupal_test_case
@@ -15,7 +17,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     protected function onNotSuccessfulTest(Exception $e)
     {
       $driver = $this->getSession()->getDriver();
-      if ($driver instanceof Behat\Mink\Driver\Selenium2Driver) {
+      if ($driver instanceof Selenium2Driver) {
         $imageData = base64_decode($this->getSession()->getDriver()->wdSession->screenshot());
         $path = realpath(UPAL_ROOT . '/../build/');
         file_put_contents($path . $this->prefix . '_image.jpg', $imageData);
@@ -378,5 +380,6 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
         $el->press();
         $this->getSession()->wait(3000); // wait a 3 second
     }
+
 }
 

@@ -1124,7 +1124,7 @@ abstract class DrupalTestCase extends TestCase {
     }
 
     // Create a user assigned to that role.
-    $edit = array();
+    $edit           = array();
     $edit['name']   = $this->randomName();
     $edit['mail']   = $edit['name'] . '@example.com';
     $edit['roles']  = array($rid => $rid);

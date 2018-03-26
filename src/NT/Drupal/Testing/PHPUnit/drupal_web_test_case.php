@@ -57,7 +57,7 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
       }
 
       $sql_tmpl = fopen($include_path . DIRECTORY_SEPARATOR . UPAL_USE_DB, "r");
-      $sql_tmpl_fix  = fopen($include_path . DIRECTORY_SEPARATOR . $this->prefix .'.sql', 'w');
+      $sql_tmpl_fix = fopen($include_path . DIRECTORY_SEPARATOR . $this->prefix .'.sql', 'w');
       while(($buffer = fgets($sql_tmpl)) !== FALSE) {
         $buffer = str_replace('${prefix}', $this->prefix, $buffer);
         fwrite($sql_tmpl_fix, $buffer);

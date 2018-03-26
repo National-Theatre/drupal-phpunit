@@ -127,7 +127,6 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
-
   protected function loadPlaywright(array $config) {
     $config += array(
       'title'              => '',
@@ -179,7 +178,6 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
     $this->getSession()->wait(3000); // Wait a 3 second.
   }
-
 
   /**
    * #edit-bbpa-item-grouping-und-none, #edit-bbpa-item-grouping-und-fnt-video, #edit-bbpa-item-grouping-und-fnt-also
@@ -335,7 +333,6 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
     $this->getSession()->wait(3000); // Wait a 3 second.
   }
-
 
   protected function login() {
     $ch = curl_init($this->base_path . '/user/login');

@@ -11,6 +11,7 @@ class fixture_helper {
   protected $object_list = array();
 
   protected function __construct() {}
+
   protected function __clone() {}
 
   public static function getInstance() {

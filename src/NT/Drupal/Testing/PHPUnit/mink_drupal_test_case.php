@@ -106,6 +106,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
       file_put_contents($path . DIRECTORY_SEPARATOR . $file, $imageData);
     }
   }
+
   /**
    * Registers Mink sessions on it's initialization.
    *

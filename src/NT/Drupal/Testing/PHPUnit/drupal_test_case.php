@@ -177,7 +177,6 @@ abstract class DrupalTestCase extends TestCase {
     return $this->assertTrue(TRUE, $message, $group);
   }
 
-
   /**
    * Fire an error assertion.
    *
@@ -2354,7 +2353,6 @@ abstract class DrupalTestCase extends TestCase {
     $this->drupalSettings = $settings;
   }
 
-
   /*
    *Print a log message to the console.
    *
@@ -2412,6 +2410,7 @@ abstract class DrupalTestCase extends TestCase {
     }
     print 'Drop took:' . (time() - $time) . "sec\n\n";
   }
+
   /**
    * Import database dump to be used.
    *
@@ -2435,4 +2434,5 @@ abstract class DrupalTestCase extends TestCase {
     exec($cmd, $output, $return);
     print 'Import finished took:' . (time() - $time) . "sec\n\n";
   }
+
 }

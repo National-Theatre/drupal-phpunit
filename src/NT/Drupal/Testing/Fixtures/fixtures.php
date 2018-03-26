@@ -13,6 +13,7 @@ abstract class fixtures {
     $node = $this->parseData($data);
     $this::$data = $node;
   }
+
   /**
    * Parse the data into a node.
    *
@@ -44,6 +45,7 @@ abstract class fixtures {
     }
     return $node;
   }
+
   /**
    * Get the current data for this fixture.
    *
@@ -53,12 +55,14 @@ abstract class fixtures {
   public function getData() {
     return $this::$data;
   }
+
   /**
    * Reset this fixture to have nid of NULL.
    */
   public function reset() {
     $this::$nid = NULL;
   }
+
   /**
    * Main function to create a fixture.
    *
@@ -72,6 +76,7 @@ abstract class fixtures {
     }
     return $this::$nid;
   }
+
   /**
    * Install node.
    *

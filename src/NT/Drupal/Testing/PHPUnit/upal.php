@@ -6,7 +6,7 @@
 namespace NT\Drupal\Testing\PHPUnit;
 
 class upal {
-  
+
   /*
    * Initialize our environment at the start of each run (i.e. suite).
    */
@@ -34,7 +34,7 @@ class upal {
     // We read from globals here because env can be empty and ini did not work in quick test.
       if (!defined('UPAL_DB_URL')) {
           define('UPAL_DB_URL', getenv('UPAL_DB_URL') ? getenv('UPAL_DB_URL') : (!empty($GLOBALS['UPAL_DB_URL']) ? $GLOBALS['UPAL_DB_URL'] : 'mysql://root:@127.0.0.1/upal'));
-      } 
+      }
 
     // Make sure we use the right Drupal codebase.
       if (!defined('UPAL_ROOT')) {
@@ -73,7 +73,7 @@ class upal {
 
     $_SERVER['HTTP_HOST'] = $url['host'];
     $_SERVER['SERVER_PORT'] = array_key_exists('port', $url) ? $url['port'] : NULL;
-    
+
     if (!defined('DRUPAL_ROOT')) {
       define('DRUPAL_ROOT', TEST_ROOT . DIRECTORY_SEPARATOR . UPAL_ROOT);
     }
@@ -82,6 +82,6 @@ class upal {
     } else {
       print 'Cannot find: ' . DRUPAL_ROOT . '/includes/bootstrap.inc' . "\n\n";
     }
-    
+
   }
 }

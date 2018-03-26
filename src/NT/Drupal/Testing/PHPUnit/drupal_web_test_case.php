@@ -6,7 +6,7 @@
 namespace NT\Drupal\Testing\PHPUnit;
 
 abstract class DrupalWebTestCase extends DrupalTestCase {
-  
+
   protected $prefix;
 
   public function setUp() {
@@ -47,7 +47,7 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
           unset($settings);
         }
 
-        // Copy modules to test env. 
+        // Copy modules to test env.
         if (defined('COPY_MODULES') && COPY_MODULES) {
           symlink(
             DRUPAL_ROOT . '/sites/' . COPY_MODULES,
@@ -64,9 +64,9 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
         fclose($sql_tmpl);
         fclose($sql_tmpl_fix);
         $cmd = sprintf(
-            '`%s sql-connect --uri=%s --root=%s` < %s', 
+            '`%s sql-connect --uri=%s --root=%s` < %s',
             UNISH_DRUSH,
-            UPAL_WEB_URL, 
+            UPAL_WEB_URL,
             UPAL_ROOT,
             $include_path . DIRECTORY_SEPARATOR . $this->prefix .'.sql'
         );
@@ -79,22 +79,22 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
             '%s site-install --uri=%s --db-url=%s --sites-subdir=upal --root=%s --account-pass=test1234 -y minimal',
             UNISH_DRUSH,
             UPAL_WEB_URL,
-            UPAL_DB_URL, 
+            UPAL_DB_URL,
             UPAL_ROOT
         );
         // Debug code
 //        print "$cmd\n\n";
-        exec($cmd, $output, $return); 
-    }    
+        exec($cmd, $output, $return);
+    }
     $files_dir = "$site/files";
     if (file_exists($files_dir)) {
       exec('chmod -R 777 ' . escapeshellarg($files_dir), $output, $return);
     }
-    
+
     require_once DRUPAL_ROOT . '/includes/bootstrap.inc';
     chdir(DRUPAL_ROOT);
     drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
-    
+
     // Reset all static variables.
     drupal_static_reset();
     // Reset cached schema for new database prefix. This must be done before
@@ -112,7 +112,7 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
     // Reload global $conf array and permissions.
     $this->refreshVariables();
     $this->checkPermissions(array(), TRUE);
-    
+
     // Enable modules for this test.
     $modules = func_get_args();
     if (isset($modules[0]) && is_array($modules[0])) {
@@ -126,7 +126,7 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
     variable_set('mail_system', array('default-system' => 'TestingMailSystem'));
     variable_set('file_public_path', 'sites/upal/files');
   }
-  
+
   protected function tearDown() {
     parent::tearDown();
     $time = time();
@@ -142,7 +142,7 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
     unlink($include_path . DIRECTORY_SEPARATOR . $this->prefix .'.sql');
     fixture_helper::clear();
   }
-  
+
     public function runCron() {
         $cmd = sprintf(
             '%s cron --root=%s --uri=%s',
@@ -154,7 +154,7 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
 //        print "$cmd\n\n";
         exec($cmd, $output, $return);
     }
-    
+
     public function dropCache() {
       $cmd = sprintf(
           '%s cache-clear all --root=%s --uri=%s',

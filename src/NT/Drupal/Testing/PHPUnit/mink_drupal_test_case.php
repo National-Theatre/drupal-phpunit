@@ -40,7 +40,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase
      * @var     Behat\Mink\Mink
      */
     private static $minkTestCaseMinkInstance;
-    
+
     /**
      * Initializes mink instance.
      */
@@ -60,7 +60,7 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase
             self::$minkTestCaseMinkInstance = null;
         }
     }
-    
+
     /**
      * Reset started sessions.
      */

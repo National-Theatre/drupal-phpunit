@@ -9,9 +9,9 @@ namespace NT\Drupal\Testing\PHPUnit;
  * Description of bbpa_mink_drupal_test_case
  */
 abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
-    
+
     protected $base_path = UPAL_WEB_URL;
-    
+
     protected function onNotSuccessfulTest(Exception $e)
     {
       $driver = $this->getSession()->getDriver();
@@ -35,7 +35,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
           'originalDate' => '',
           'openingNight' => '',
           'pressNight'   => '',
-            
+
         );
         try {
             $this->getSession()->visit($this->base_path . '/node/add/production');
@@ -43,39 +43,38 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
             print $e->getMessage() . "\n\n";
             $this->getSession()->visit($this->base_path . '/node/add/production');
         }
-        
-        
+
         $page = $this->getSession()->getPage();
         $el = $page->find('css', '#edit-title');
         $el->setValue($config['title']);
-        
+
         $el = $page->find('css', '#edit-body-und-0-value');
         $el->setValue($config['body']);
-        
+
         $el = $page->find('css', '#edit-bbpa-author-und-0-value');
         $el->setValue($config['author']);
-        
+
         $el = $page->find('css', '#edit-bbpa-core-img-und-0-target-id');
         $el->setValue($config['image']);
-        
+
         $el = $page->find('css', '#edit-bbpa-playwright-und-0-target-id');
         $el->setValue($config['playwright']);
-        
+
         $el = $page->find('css', '#edit-bbpa-company-und-0-target-id');
         $el->setValue($config['company']);
-        
+
         $el = $page->find('css', '#edit-bbpa-theatre-und-0-target-id');
         $el->setValue($config['theatre']);
-        
+
         $el = $page->find('css', '#edit-bbpa-original-date-und-0-value-datepicker-popup-0');
         $el->setValue($config['originalDate']);
-        
+
         $el = $page->find('css', '#edit-bbpa-opening-night-und-0-value-datepicker-popup-0');
         $el->setValue($config['openingNight']);
-        
+
         $el = $page->find('css', '#edit-bbpa-press-night-und-0-value-datepicker-popup-0');
         $el->setValue($config['pressNight']);
-        
+
         $el = $page->find('css', '#edit-submit');
         $el->press();
 
@@ -87,21 +86,21 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
           'title'   => '',
           'address' => '',
         );
-        
+
         try {
             $this->getSession()->visit($this->base_path . '/node/add/theatre');
         } catch (Exception $e) {
             print $e->getMessage() . "\n\n";
             $this->getSession()->visit($this->base_path . '/node/add/theatre');
-        }        
-        
+        }
+
         $page = $this->getSession()->getPage();
         $el = $page->find('css', '#edit-title');
         $el->setValue($config['title']);
-        
+
         $el = $page->find('css', '#edit-bbpa-address-und-0-value');
         $el->setValue($config['address']);
-        
+
         $el = $page->find('css', '#edit-submit');
         $el->press();
 
@@ -118,11 +117,11 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
             print $e->getMessage() . "\n\n";
             $this->getSession()->visit($this->base_path . '/node/add/company');
         }
-                
+
         $page = $this->getSession()->getPage();
         $el = $page->find('css', '#edit-title');
         $el->setValue($config['title']);
-        
+
         $el = $page->find('css', '#edit-submit');
         $el->press();
 
@@ -152,30 +151,30 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
             print $e->getMessage() . "\n\n";
             $this->getSession()->visit($this->base_path . '/node/add/playwright');
         }
-        
+
         $page = $this->getSession()->getPage();
         $el = $page->find('css', '#edit-title');
         $el->setValue($config['title']);
-        
+
         $el = $page->find('css', '#edit-body-und-0-value');
         $el->setValue($config['body']);
-        
+
         $el = $page->find('css', '#edit-bbpa-recordid-und-0-value');
         $el->setValue($config['RecordID']);
-        
+
         $el = $page->find('css', '#edit-bbpa-role-rid-und-0-value');
         $el->setValue($config['Role RecordID']);
-        
+
         $el = $page->find('css', '#edit-bbpa-name-rid-und-0-value');
         $el->setValue($config['Name RecordID']);
-        
+
         $el = $page->find('css', '#edit-bbpa-pw-person-und-0-target-id');
         $el->setValue($config['Person Details']);
-        
+
         $el = $page->find('css', '#edit-bbpa-pw-image-und-0-target-id');
         $el->setValue($config['Main Image']);
         /**
-         * @todo finish this 
+         * @todo finish this
          */
 //        foreach($config['production history'] AS $i=>$v) {
 //            if($i>0) {
@@ -184,8 +183,8 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 //                $this->getSession()->wait(3000); // wait a 3 second
 //            }
 //        }
-        
-        
+
+
         $el = $page->find('css', '#edit-submit');
         $el->press();
 
@@ -196,10 +195,10 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     /**
      * #edit-bbpa-item-grouping-und-none, #edit-bbpa-item-grouping-und-fnt-video, #edit-bbpa-item-grouping-und-fnt-also
      * #edit-bbpa-item-grouping-und-browse, #edit-bbpa-item-grouping-und-featured-cont
-     * @param array $config 
+     * @param array $config
      */
     protected function loadFeaturedItem(array $config) {
-        
+
         $config += array(
           'title'     => '',
           'body'      => '',
@@ -213,24 +212,24 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
             print $e->getMessage() . "\n\n";
             $this->getSession()->visit($this->base_path . '/node/add/featured-item');
         }
-        
+
         $page = $this->getSession()->getPage();
         $el = $page->find('css', '#edit-title');
         $el->setValue($config['title']);
-        
+
         $el = $page->find('css', '#edit-body-und-0-value');
         $el->setValue($config['body']);
-        
+
         $el = $page->find('css', '#edit-bbpa-featured-item-und-0-target-id');
         $el->setValue($config['item']);
-        
+
         $el = $page->find('css', '#edit-bbpa-item-grouping-und');
         $el = $el->find('css', $config['grouping']);
-        $el->check();        
-        
+        $el->check();
+
         $el = $page->find('css', '#edit-bbpa-weight-und-0-value');
         $el->setValue($config['weighting']);
-        
+
         $el = $page->find('css', '#edit-submit');
         $el->press();
 
@@ -238,7 +237,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     }
 
     protected function loadArticle(array $config) {
-        
+
         $config += array(
           'title'  => '',
           'body'   => '',
@@ -251,20 +250,20 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
             print $e->getMessage() . "\n\n";
             $this->getSession()->visit($this->base_path . '/node/add/bbpa-article');
         }
-        
+
         $page = $this->getSession()->getPage();
         $el = $page->find('css', '#edit-title');
         $el->setValue($config['title']);
-        
+
         $el = $page->find('css', '#edit-body-und-0-value');
         $el->setValue($config['body']);
-        
+
         $el = $page->find('css', '#edit-bbpa-art-image-und-0-target-id');
         $el->setValue($config['image']);
-        
+
         $el = $page->find('css', '#edit-bbpa-art-layout-und-0-value');
         $el->setValue($config['layout']);
-        
+
         $el = $page->find('css', '#edit-submit');
         $el->press();
 
@@ -272,41 +271,41 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     }
 
     protected function loadImage(array $config) {
-        
+
         $config += array(
           'title'  => '',
           'body'   => '',
           'dTitle' => '',
           'file'   => '',
-        );        
+        );
         try {
             $this->getSession()->visit($this->base_path . '/node/add/image');
         } catch (Exception $e) {
             print $e->getMessage() . "\n\n";
             $this->getSession()->visit($this->base_path . '/node/add/image');
         }
-        
+
         $page = $this->getSession()->getPage();
         $el = $page->find('css', '#edit-title');
         $el->setValue($config['title']);
-        
+
         $el = $page->find('css', '#edit-body-und-0-value');
         $el->setValue($config['body']);
-        
+
         $el = $page->find('css', '#edit-nt-display-title-und-0-value');
         $el->setValue($config['title']);
-        
+
         $el = $page->find('css', '#edit-nt-image-image-und-0-upload');
         $el->setValue($config['file']);
-        
+
         $el = $page->find('css', '#edit-submit');
         $el->press();
 
-        $this->getSession()->wait(3000, "$('.messages.status').length > 0"); // wait a 3 second        
+        $this->getSession()->wait(3000, "$('.messages.status').length > 0"); // wait a 3 second
     }
 
     protected function loadVideo(array $config) {
-        
+
         $config += array(
           'title'        => '',
           'body'         => '',
@@ -321,26 +320,26 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
             print $e->getMessage() . "\n\n";
             $this->getSession()->visit($this->base_path . '/node/add/video');
         }
-        
+
         $page = $this->getSession()->getPage();
         $el = $page->find('css', '#edit-title');
         $el->setValue($config['title']);
-        
+
         $el = $page->find('css', '#edit-body-und-0-value');
         $el->setValue($config['body']);
-        
+
         $el = $page->find('css', '#edit-nt-display-title-und-0-value');
         $el->setValue($config['dTitle']);
-        
+
         $el = $page->find('css', '#edit-nt-video-file-und-0-upload');
         $el->setValue($config['file']);
-        
+
         $el = $page->find('css', '#edit-nt-video-running-time-und-0-value');
         $el->setValue($config['running_time']);
-        
+
         $el = $page->find('css', '#edit-nt-video-thumb-und-0-target-id');
         $el->setValue($config['thumbnail']);
-        
+
         $el = $page->find('css', '#edit-submit');
         $el->press();
 
@@ -350,7 +349,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
     protected function login() {
         /**
-         * @todo Work out why it needs a wake up kick 
+         * @todo Work out why it needs a wake up kick
          */
 //        $this->getSession()->visit($this->base_path . '/user/login');
 //        $this->getSession()->wait(1000); // wait a 1 second
@@ -369,7 +368,7 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
             print $e->getMessage() . "\n\n";
             $this->getSession()->visit($this->base_path . '/user/login');
         }
-        
+
         $page = $this->getSession()->getPage();
         $el = $page->find('css', '#edit-name');
         $el->setValue('admin');

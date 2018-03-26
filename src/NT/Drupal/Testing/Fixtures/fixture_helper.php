@@ -6,7 +6,7 @@
 namespace NT\Drupal\Testing\Fixtures;
 
 class fixture_helper {
-  
+
   protected static $instance;
   protected $object_list = array();
 
@@ -19,7 +19,7 @@ class fixture_helper {
     }
     return self::$instance;
   }
-  
+
   public static function setup($fixture, $type = NULL) {
     if (!empty($fixture)) {
       $class = str_replace(' ', '_', strtolower($fixture));
@@ -63,7 +63,7 @@ class fixture_helper {
 //      }
 
       $helper = fixture_helper::getInstance();
-      
+
       $fixture_obj = new $ob_str;
       $helper->add_object($fixture_obj);
       return $fixture_obj->run();
@@ -72,7 +72,7 @@ class fixture_helper {
       return FALSE;
     }
   }
-  
+
   public static function clear($fixture = NULL) {
     $helper = fixture_helper::getInstance();
     if (isset($fixture)) {
@@ -80,11 +80,11 @@ class fixture_helper {
     }
     $helper->remove_object($fixture);
   }
-  
+
   public function add_object($obj) {
     $this->object_list[] = $obj;
   }
-  
+
   public function remove_object($fixture = NULL) {
     foreach ($this->object_list as $key => $obj) {
       if (isset($fixture)) {

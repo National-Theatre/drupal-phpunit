@@ -6,7 +6,7 @@
 namespace NT\Drupal\Testing\Fixtures;
 
 abstract class fixtures {
-  
+
   public function __construct() {
     $data = $this->data();
     $node = $this->parseData($data);
@@ -98,7 +98,7 @@ abstract class fixtures {
       throw new \Exception('Missing node_save().');
     }
   }
-  
+
   protected function dependanices(&$node) {
     foreach ($node as $key => &$value) {
       if ($key === 'nid' && is_object($value)) {
@@ -117,7 +117,7 @@ abstract class fixtures {
       }
     }
   }
-  
+
   protected function multi_image($data) {
     $output = array();
     foreach ($data as $item) {
@@ -130,7 +130,7 @@ abstract class fixtures {
     }
     return $output;
   }
-  
+
   protected function multi_nt_image($data) {
     $output = array();
     foreach ($data as $item) {
@@ -144,7 +144,7 @@ abstract class fixtures {
     var_dump($output);
     return $output;
   }
-  
+
   protected function install_image($data) {
     $data += array(
       'title'                => 'image_' . time(),
@@ -189,7 +189,7 @@ abstract class fixtures {
     $node->field_asset_category['und'] = $data['field_asset_category'];
     return $node;
   }
-  
+
   protected function install_nt_image($data) {
     $data += array(
       'title'               =>'image_' . time(),
@@ -236,7 +236,7 @@ abstract class fixtures {
     $node->nt_asset_category['und'] = $data['nt_asset_category'];
     return $node;
   }
-  
+
   protected function install_rich_media($data) {
     $data += array(
       'title'              => 'Rich Media_' . time(),
@@ -281,7 +281,7 @@ abstract class fixtures {
         $output[] = array('nid' => $this->install_media_ref($item));
       }
     }
-    
+
     return $output;
   }
 
@@ -316,10 +316,10 @@ abstract class fixtures {
         $output[] = array('nid' => $this->install_video($item));
       }
     }
-    
+
     return $output;
   }
-  
+
   protected function install_video($data) {
     $data += array(
       'title'                 => 'Video_' . time(),
@@ -338,7 +338,7 @@ abstract class fixtures {
       'field_project_title'  => '',
       'field_weighting'      => 1,
     );
-    
+
     if (is_array($data['field_thumb'])) {
       $data['field_thumb'] = $this->multi_image($data['field_thumb']);
     }
@@ -349,7 +349,7 @@ abstract class fixtures {
     $node->status = 1;
     $node->name = 'admin';
     $node->uid = 1;
-    
+
     $node->title = $data['title'];
     $node->body['und'][0]['value'] = $data['body'];
     $node->body['und'][0]['format'] = 'full_html';
@@ -367,7 +367,7 @@ abstract class fixtures {
     $node->field_credits['und'][0]['value'] = $data['field_credits'];
     if (isset($data['field_asset_category'])) {
       $node->field_asset_category['und'][0]['tid'] = $data['field_asset_category'];
-    }    
+    }
     if (isset($data['field_backstage'])) {
       foreach ($data['field_backstage'] as $delta => $value) {
         $node->field_backstage['und'][$delta]['tid'] = $value;
@@ -380,10 +380,10 @@ abstract class fixtures {
     $node->field_asset_id['und'][0]['value'] = $data['field_asset_id'];
     $node->field_project_title['und'][0]['value'] = $data['field_project_title'];
     $node->field_weighting['und'][0]['value'] = $data['field_weighting'];
-    
+
     return $node;
   }
-  
+
   protected function install_nt_video($data) {
     $data += array(
       'title'                 => 'Video_' . time(),
@@ -419,7 +419,7 @@ abstract class fixtures {
     $node->status = 1;
     $node->name = 'admin';
     $node->uid = 1;
-    
+
     $node->title = $data['title'];
     $node->body['und'][0]['value'] = $data['body'];
     $node->body['und'][0]['format'] = 'full_html';
@@ -451,7 +451,7 @@ abstract class fixtures {
     $node->nt_credits['und'][0]['value'] = $data['nt_credits'];
     if (isset($data['nt_asset_category'])) {
       $node->nt_asset_category['und'][0]['tid'] = $data['nt_asset_category'];
-    }    
+    }
     if (isset($data['nt_video_backstage'])) {
       foreach ($data['nt_video_backstage'] as $delta => $value) {
         $node->nt_video_backstage['und'][$delta]['tid'] = $value;

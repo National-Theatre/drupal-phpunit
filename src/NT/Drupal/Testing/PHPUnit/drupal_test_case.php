@@ -2357,10 +2357,10 @@ abstract class DrupalTestCase extends TestCase {
   function directory_cache($subdir = '') {
     return getenv('CACHE_PREFIX') . '/' . $subdir;
   }
-  
+
   /**
    * Drop all the tables in the database defined.
-   * 
+   *
    * @param string $database
    *   Label of database to clear all the tables.
    */

@@ -3,6 +3,7 @@
 namespace NT\Drupal\Testing\Fixtures;
 
 use NT\Drupal\Testing\PHPUnit\fixture_helper;
+
 /**
  *
  */

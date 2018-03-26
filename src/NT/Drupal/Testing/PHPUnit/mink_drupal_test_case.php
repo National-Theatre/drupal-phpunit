@@ -16,8 +16,8 @@ use Goutte\Client as GoutteClient;
 
 use Selenium\Client as SeleniumClient;
 
-use Behat\SahiClient\Connection as SahiConnection,
-    Client as SahiClient;
+use Behat\SahiClient\Connection as SahiConnection;
+use Client as SahiClient;
 
 /*
  * This file is part of the Behat\Mink.

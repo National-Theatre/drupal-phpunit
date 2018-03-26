@@ -3,12 +3,15 @@
 namespace NT\Drupal\Testing\PHPUnit;
 
 /**
- *
+ * Implements DrupalWebTestCase abstract class.
  */
 abstract class DrupalWebTestCase extends DrupalTestCase {
 
   protected $prefix;
 
+  /**
+   *
+   */
   public function setUp() {
     parent::setUp();
 
@@ -124,6 +127,9 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
     variable_set('file_public_path', 'sites/upal/files');
   }
 
+  /**
+   *
+   */
   protected function tearDown() {
     parent::tearDown();
     $time = time();
@@ -140,6 +146,9 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
     fixture_helper::clear();
   }
 
+  /**
+   *
+   */
   public function runCron() {
     $cmd = sprintf(
         '%s cron --root=%s --uri=%s',
@@ -150,6 +159,9 @@ abstract class DrupalWebTestCase extends DrupalTestCase {
     exec($cmd, $output, $return);
   }
 
+  /**
+   *
+   */
   public function dropCache() {
     $cmd = sprintf(
       '%s cache-clear all --root=%s --uri=%s',

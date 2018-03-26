@@ -7,7 +7,7 @@ namespace NT\Drupal\Testing\PHPUnit;
  */
 class upal {
 
-  /*
+  /**
    * Initialize our environment at the start of each run (i.e. suite).
    */
   public static function init() {

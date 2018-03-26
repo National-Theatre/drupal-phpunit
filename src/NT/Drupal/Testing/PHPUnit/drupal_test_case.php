@@ -157,6 +157,9 @@ abstract class DrupalTestCase extends TestCase {
    */
   protected $redirect_count;
 
+  /**
+   *
+   */
   public function run(TestResult $result = NULL) {
     $this->setPreserveGlobalState(FALSE);
     return parent::run($result);
@@ -200,10 +203,16 @@ abstract class DrupalTestCase extends TestCase {
     return $this->fail('exception: ' . $message, $group);
   }
 
+  /**
+   *
+   */
   public function assertEqual($expected, $actual, $msg = NULL) {
     return $this->assertEquals($expected, $actual, $msg);
   }
 
+  /**
+   *
+   */
   public function assertIdentical($first, $second, $message = '', $group = 'Other') {
     return $this->assertSame($first, $second, $message);
   }
@@ -1120,6 +1129,9 @@ abstract class DrupalTestCase extends TestCase {
     return $all_permutations;
   }
 
+  /**
+   *
+   */
   public function verbose($message) {
   }
 
@@ -1352,7 +1364,7 @@ abstract class DrupalTestCase extends TestCase {
   /**
    * Reads headers and registers errors received from the tested site.
    *
-   * @see _drupal_log_error().
+   * @see _drupal_log_error()
    *
    * @param $curlHandler
    *   The cURL handler.
@@ -1665,7 +1677,7 @@ abstract class DrupalTestCase extends TestCase {
     }
   }
 
-  /*
+  /**
    * Logs a user out of the internal browser, then check the login page to confirm logout.
    */
   protected function drupalLogout() {
@@ -2354,14 +2366,11 @@ abstract class DrupalTestCase extends TestCase {
   }
 
   /*
-   *Print a log message to the console.
+   * Print a log message to the console.
    *
    * @param string $message
    * @param string $type
-   *   Supported types are:
-   *     - notice
-   *     - verbose
-   *     - debug
+   *   Supported types are: notice, verbose, debug.
    */
   public function log($message, $type = 'notice') {
     $line = "\nLog: $message\n";
@@ -2378,7 +2387,10 @@ abstract class DrupalTestCase extends TestCase {
     }
   }
 
-  public function log_level() {
+  /**
+   *
+   */
+public function log_level() {
     if (in_array('--debug', $_SERVER['argv'])) {
       return 'debug';
     }
@@ -2387,6 +2399,9 @@ abstract class DrupalTestCase extends TestCase {
     }
   }
 
+  /**
+   *
+   */
   public function directory_cache($subdir = '') {
     return getenv('CACHE_PREFIX') . '/' . $subdir;
   }
@@ -2414,9 +2429,9 @@ abstract class DrupalTestCase extends TestCase {
   /**
    * Import database dump to be used.
    *
-   * @param String $database
+   * @param string $database
    *   Database name to be used.
-   * @param String $file
+   * @param string $file
    *   The dump file to import.
    */
   public static function import_database($database, $file) {

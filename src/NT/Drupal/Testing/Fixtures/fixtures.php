@@ -8,6 +8,9 @@ use NT\Drupal\Testing\PHPUnit\fixture_helper;
  */
 abstract class fixtures {
 
+  /**
+   *
+   */
   public function __construct() {
     $data = $this->data();
     $node = $this->parseData($data);
@@ -66,7 +69,7 @@ abstract class fixtures {
   /**
    * Main function to create a fixture.
    *
-   * @return Int
+   * @return int
    *   NID of the fixture created.
    */
   public function run() {
@@ -104,6 +107,9 @@ abstract class fixtures {
     }
   }
 
+  /**
+   *
+   */
   protected function dependanices(&$node) {
     foreach ($node as $key => &$value) {
       if ($key === 'nid' && is_object($value)) {
@@ -123,6 +129,9 @@ abstract class fixtures {
     }
   }
 
+  /**
+   *
+   */
   protected function multi_image($data) {
     $output = array();
     foreach ($data as $item) {
@@ -136,6 +145,9 @@ abstract class fixtures {
     return $output;
   }
 
+  /**
+   *
+   */
   protected function multi_nt_image($data) {
     $output = array();
     foreach ($data as $item) {
@@ -150,6 +162,9 @@ abstract class fixtures {
     return $output;
   }
 
+  /**
+   *
+   */
   protected function install_image($data) {
     $data += array(
       'title'                => 'image_' . time(),
@@ -195,6 +210,9 @@ abstract class fixtures {
     return $node;
   }
 
+  /**
+   *
+   */
   protected function install_nt_image($data) {
     $data += array(
       'title'               => 'image_' . time(),
@@ -242,6 +260,9 @@ abstract class fixtures {
     return $node;
   }
 
+  /**
+   *
+   */
   protected function install_rich_media($data) {
     $data += array(
       'title'              => 'Rich Media_' . time(),
@@ -275,6 +296,9 @@ abstract class fixtures {
     return $node;
   }
 
+  /**
+   *
+   */
   protected function multi_media_ref($data) {
     $output = array();
     foreach ($data as $item) {
@@ -289,6 +313,9 @@ abstract class fixtures {
     return $output;
   }
 
+  /**
+   *
+   */
   protected function install_media_ref($data) {
     $type = array_shift(array_keys($data));
     $id = NULL;
@@ -309,6 +336,9 @@ abstract class fixtures {
     return $id;
   }
 
+  /**
+   *
+   */
   protected function multi_video($data) {
     $output = array();
     foreach ($data as $item) {
@@ -323,6 +353,9 @@ abstract class fixtures {
     return $output;
   }
 
+  /**
+   *
+   */
   protected function install_video($data) {
     $data += array(
       'title'                 => 'Video_' . time(),
@@ -387,6 +420,9 @@ abstract class fixtures {
     return $node;
   }
 
+  /**
+   *
+   */
   protected function install_nt_video($data) {
     $data += array(
       'title'                 => 'Video_' . time(),

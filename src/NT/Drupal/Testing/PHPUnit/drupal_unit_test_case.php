@@ -9,6 +9,9 @@ abstract class DrupalUnitTestCase extends DrupalTestCase {
   /* @var int Current drupal run time level */
   protected $drupal_level;
 
+  /**
+   *
+   */
   public function setUp($bootstrap = DRUPAL_BOOTSTRAP_FULL, $file = UPAL_USE_DB) {
     parent::setUp();
     $this->drupal_level = $bootstrap;
@@ -33,6 +36,9 @@ abstract class DrupalUnitTestCase extends DrupalTestCase {
     drupal_bootstrap($bootstrap);
   }
 
+  /**
+   *
+   */
   protected function tearDown() {
     parent::tearDown();
     DrupalTestCase::drop_tables(DB_DB);

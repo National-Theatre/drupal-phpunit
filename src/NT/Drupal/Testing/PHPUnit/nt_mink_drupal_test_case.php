@@ -11,6 +11,9 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
 
   protected $base_path = UPAL_WEB_URL;
 
+  /**
+   *
+   */
   protected function onNotSuccessfulTest(Exception $e)
     {
     $driver = $this->getSession()->getDriver();
@@ -22,6 +25,9 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     throw $e;
   }
 
+  /**
+   *
+   */
   protected function loadProduction(array $config) {
     $config += array(
       'title'        => '',
@@ -80,6 +86,9 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
+  /**
+   *
+   */
   protected function loadTheatre(array $config) {
     $config += array(
       'title'   => '',
@@ -106,6 +115,9 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
+  /**
+   *
+   */
   protected function loadCompany(array $config) {
     $config += array(
       'title' => '',
@@ -127,6 +139,9 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
+  /**
+   *
+   */
   protected function loadPlaywright(array $config) {
     $config += array(
       'title'              => '',
@@ -224,6 +239,9 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
+  /**
+   *
+   */
   protected function loadArticle(array $config) {
 
     $config += array(
@@ -258,6 +276,9 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
+  /**
+   *
+   */
   protected function loadImage(array $config) {
 
     $config += array(
@@ -292,6 +313,9 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $this->getSession()->wait(3000, "$('.messages.status').length > 0"); // Wait a 3 second.
   }
 
+  /**
+   *
+   */
   protected function loadVideo(array $config) {
 
     $config += array(
@@ -334,6 +358,9 @@ abstract class NtMinkDrupalTestCase extends MinkDrupalTestCase {
     $this->getSession()->wait(3000); // Wait a 3 second.
   }
 
+  /**
+   *
+   */
   protected function login() {
     $ch = curl_init($this->base_path . '/user/login');
     $fp = fopen("/dev/null", "w");

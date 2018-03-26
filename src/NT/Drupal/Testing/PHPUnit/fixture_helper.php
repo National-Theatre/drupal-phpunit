@@ -10,10 +10,19 @@ class fixture_helper {
   protected static $instance;
   protected $object_list = array();
 
+  /**
+   *
+   */
   protected function __construct() {}
 
+  /**
+   *
+   */
   protected function __clone() {}
 
+  /**
+   *
+   */
   public static function getInstance() {
     if (!isset(self::$instance)) {
       self::$instance = new fixture_helper();
@@ -21,6 +30,9 @@ class fixture_helper {
     return self::$instance;
   }
 
+  /**
+   *
+   */
   public static function setup($fixture, $type = NULL) {
     if (!empty($fixture)) {
       try {
@@ -41,6 +53,9 @@ class fixture_helper {
     }
   }
 
+  /**
+   *
+   */
   public static function clear($fixture = NULL) {
     $helper = fixture_helper::getInstance();
     if (isset($fixture)) {
@@ -49,10 +64,16 @@ class fixture_helper {
     $helper->remove_object($fixture);
   }
 
+  /**
+   *
+   */
   public function add_object($obj) {
     $this->object_list[] = $obj;
   }
 
+  /**
+   *
+   */
   public function remove_object($fixture = NULL) {
     foreach ($this->object_list as $key => $obj) {
       if (isset($fixture)) {

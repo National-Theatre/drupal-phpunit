@@ -96,6 +96,9 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
     return $this->getMink()->getSession($name);
   }
 
+  /**
+   *
+   */
   public function takeScreenShot($path, $file = NULL) {
     if (!isset($file)) {
       $file = $this->prefix . '_image.jpg';
@@ -110,7 +113,8 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
   /**
    * Registers Mink sessions on it's initialization.
    *
-   * @param Behat\Mink\Mink     $mink   Mink manager instance
+   * @param Behat\Mink\Mink $mink
+   *   Mink manager instance.
    */
   protected static function registerMinkSessions(Mink $mink)
     {
@@ -119,8 +123,10 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
   /**
    * Initizalizes and returns new GoutteDriver session.
    *
-   * @param array   $zendConfig         zend config parameters
-   * @param array   $serverParameters   server parameters
+   * @param array $zendConfig
+   *   zend config parameters.
+   * @param array $serverParameters
+   *   server parameters.
    *
    * @return Behat\Mink\Session
    */
@@ -134,10 +140,10 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
   /**
    * Initizalizes and returns new SahiDriver session.
    *
-   * @param string  $browser    browser name to use (default = firefox)
-   * @param array   $sid        sahi SID
-   * @param string  $host       sahi proxy host
-   * @param integer $port       port number
+   * @param string $browser browser name to use (default = firefox)
+   * @param array $sid sahi SID
+   * @param string $host sahi proxy host
+   * @param int $port port number
    *
    * @return Behat\Mink\Session
    */
@@ -149,10 +155,10 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
   /**
    * Initizalizes and returns new ZombieDriver session.
    *
-   * @param string  $host           zombie.js server host
-   * @param integer $port           port number
-   * @param Boolean $autoServer     use bundled with driver server or manually started one
-   * @param string  $nodeBin        path to node binary
+   * @param string $host zombie.js server host
+   * @param int $port port number
+   * @param bool $autoServer use bundled with driver server or manually started one
+   * @param string $nodeBin path to node binary
    *
    * @return Behat\Mink\Session
    */
@@ -168,10 +174,10 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
   /**
    * Initizalizes and returns new SeleniumDriver session.
    *
-   * @param string  $browser        browser info
-   * @param string  $baseUrl        selenium start url
-   * @param string  $host           selenium server server host
-   * @param integer $port           port number
+   * @param string $browser browser info
+   * @param string $baseUrl selenium start url
+   * @param string $host selenium server server host
+   * @param int $port port number
    *
    * @return Behat\Mink\Session
    */
@@ -185,8 +191,8 @@ abstract class MinkDrupalTestCase extends DrupalWebTestCase {
   /**
    * Initizalizes and returns new Selenium2Driver session.
    *
-   * @param string  $browser        browser name
-   * @param string  $host           selenium server server host
+   * @param string $browser browser name
+   * @param string $host selenium server server host
    *
    * @return Behat\Mink\Session
    */

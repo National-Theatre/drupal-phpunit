@@ -1,4 +1,5 @@
 <?php
+
 /*
  * @file
  *   Test Framework for Drupal based on PHPUnit.
@@ -19,14 +20,20 @@
  *     - Compare speed versus simpletest.
  *     - move upal_init() to a class thats called early in the suite.
  */
+
 namespace NT\Drupal\Testing\PHPUnit;
-/*
+
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestResult;
+
+/**
+ *
  * @todo: Perhaps move these annotations down to the instance classes and tests.
  *
  * @runTestsInSeparateProcess
  * @preserveGlobalState disabled
  */
-abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
+abstract class DrupalTestCase extends TestCase {
 
   /**
    * The profile to install as a basis for testing.
@@ -121,7 +128,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
   protected $originalShutdownCallbacks = array();
 
   /**
-   * HTTP authentication method
+   * HTTP authentication method.
    */
   protected $httpauth_method = CURLAUTH_BASIC;
 
@@ -150,7 +157,10 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    */
   protected $redirect_count;
 
-  public function run(\PHPUnit_Framework_TestResult $result = NULL) {
+  /**
+   *
+   */
+  public function run(TestResult $result = NULL) {
     $this->setPreserveGlobalState(FALSE);
     return parent::run($result);
   }
@@ -162,26 +172,13 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   The message to display along with the assertion.
    * @param $group
    *   The type of assertion - examples are "Browser", "PHP".
+   *
    * @return
    *   TRUE.
    */
   protected function pass($message = NULL, $group = 'Other') {
     return $this->assertTrue(TRUE, $message, $group);
   }
-
-  /**
-   * Fire an assertion that is always negative.
-   *
-   * @param $message
-   *   The message to display along with the assertion.
-   * @param $group
-   *   The type of assertion - examples are "Browser", "PHP".
-   * @return
-   *   FALSE.
-   */
-  //protected function fail($message = NULL, $group = 'Other') {
-  //  return $this->assertTrue(FALSE, $message, $group);
-  //}
 
   /**
    * Fire an error assertion.
@@ -192,6 +189,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   The type of assertion - examples are "Browser", "PHP".
    * @param $caller
    *   The caller of the error.
+   *
    * @return
    *   FALSE.
    */
@@ -205,11 +203,17 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     return $this->fail('exception: ' . $message, $group);
   }
 
-  function assertEqual($expected, $actual, $msg = NULL) {
+  /**
+   *
+   */
+  public function assertEqual($expected, $actual, $msg = NULL) {
     return $this->assertEquals($expected, $actual, $msg);
   }
 
-  function assertIdentical($first, $second, $message = '', $group = 'Other') {
+  /**
+   *
+   */
+  public function assertIdentical($first, $second, $message = '', $group = 'Other') {
     return $this->assertSame($first, $second, $message);
   }
 
@@ -248,6 +252,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -268,6 +273,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -289,6 +295,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -307,6 +314,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -327,6 +335,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   The group this message belongs to.
    * @param $not_exists
    *   TRUE if this text should not exist, FALSE if it should.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -353,6 +362,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -373,6 +383,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -393,6 +404,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   The group this message belongs to.
    * @param $be_unique
    *   TRUE if this text should be found only once, FALSE if it should be found more than once.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -421,6 +433,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -440,6 +453,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -459,6 +473,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -482,6 +497,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -552,6 +568,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *
    * @param $element
    *   SimpleXMLElement select element.
+   *
    * @return
    *   The selected value or FALSE.
    */
@@ -613,6 +630,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -631,6 +649,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -649,6 +668,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -667,6 +687,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -681,6 +702,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Id of field to assert.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -696,6 +718,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Id of field to assert.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -713,6 +736,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Option to assert.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    *
@@ -732,6 +756,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Option to assert.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -749,6 +774,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -765,6 +791,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -786,6 +813,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   it should add a "todo" comment above the call to this function explaining
    *   the legacy bug that the test wishes to ignore and including a link to an
    *   issue that is working to fix that legacy bug.
+   *
    * @return
    *   TRUE on pass, FALSE on fail.
    */
@@ -809,6 +837,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Field attributes.
    * @param $value
    *   Value of field.
+   *
    * @return
    *   XPath for specified values.
    */
@@ -825,6 +854,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   of all codes see http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html.
    * @param $message
    *   Message to display.
+   *
    * @return
    *   Assertion result.
    */
@@ -889,7 +919,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
   protected function assertMailString($field_name, $string, $email_depth) {
     $mails = $this->drupalGetMails();
     $string_found = FALSE;
-    for ($i = sizeof($mails) -1; $i >= sizeof($mails) - $email_depth && $i >= 0; $i--) {
+    for ($i = sizeof($mails) - 1; $i >= sizeof($mails) - $email_depth && $i >= 0; $i--) {
       $mail = $mails[$i];
       // Normalize whitespace, as we don't know what the mail system might have
       // done. Any run of whitespace becomes a single space.
@@ -933,12 +963,13 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE if the assertion succeeded, FALSE otherwise.
    */
   protected function assertLink($label, $index = 0, $message = '', $group = 'Other') {
     $links = $this->xpath('//a[normalize-space(text())=:label]', array(':label' => $label));
-    $message = ($message ?  $message : t('Link with label %label found.', array('%label' => $label)));
+    $message = ($message ? $message : t('Link with label %label found.', array('%label' => $label)));
     return $this->assertTrue(isset($links[$index]), $message, $group);
   }
 
@@ -953,12 +984,13 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Message to display.
    * @param $group
    *   The group this message belongs to, defaults to 'Other'.
+   *
    * @return
    *   TRUE if the assertion succeeded, FALSE otherwise.
    */
   protected function assertNoLink($label, $message = '', $group = 'Other') {
     $links = $this->xpath('//a[normalize-space(text())=:label]', array(':label' => $label));
-    $message = ($message ?  $message : t('Link with label %label not found.', array('%label' => $label)));
+    $message = ($message ? $message : t('Link with label %label not found.', array('%label' => $label)));
     return $this->assertTrue(empty($links), $message, $group);
   }
 
@@ -979,7 +1011,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    */
   protected function assertLinkByHref($href, $index = 0, $message = '', $group = 'Other') {
     $links = $this->xpath('//a[contains(@href, :href)]', array(':href' => $href));
-    $message = ($message ?  $message : t('Link containing href %href found.', array('%href' => $href)));
+    $message = ($message ? $message : t('Link containing href %href found.', array('%href' => $href)));
     return $this->assertTrue(isset($links[$index]), $message, $group);
   }
 
@@ -998,7 +1030,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    */
   protected function assertNoLinkByHref($href, $message = '', $group = 'Other') {
     $links = $this->xpath('//a[contains(@href, :href)]', array(':href' => $href));
-    $message = ($message ?  $message : t('No link containing href %href found.', array('%href' => $href)));
+    $message = ($message ? $message : t('No link containing href %href found.', array('%href' => $href)));
     return $this->assertTrue(empty($links), $message, $group);
   }
 
@@ -1011,6 +1043,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *
    * @param $length
    *   Length of random string to generate.
+   *
    * @return
    *   Randomly generated string.
    */
@@ -1033,6 +1066,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *
    * @param $length
    *   Length of random string to generate.
+   *
    * @return
    *   Randomly generated string.
    */
@@ -1095,10 +1129,10 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     return $all_permutations;
   }
 
-  function verbose($message) {
-    if (strlen($message) < 500) {
-      // $this->log($message, 'verbose');
-    }
+  /**
+   *
+   */
+  public function verbose($message) {
   }
 
   /**
@@ -1107,6 +1141,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *
    * @param $permissions
    *   Array of permission names to assign to user.
+   *
    * @return
    *   A fully loaded user object with pass_raw property, or FALSE if account
    *   creation fails.
@@ -1118,7 +1153,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     }
 
     // Create a user assigned to that role.
-    $edit = array();
+    $edit           = array();
     $edit['name']   = $this->randomName();
     $edit['mail']   = $edit['name'] . '@example.com';
     $edit['roles']  = array($rid => $rid);
@@ -1144,6 +1179,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Array of permission names to assign to role.
    * @param $name
    *   (optional) String for the name of the role.  Defaults to a random string.
+   *
    * @return
    *   Role ID of newly created role, or FALSE if role creation failed.
    */
@@ -1185,6 +1221,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    * @param $headers
    *   An array containing additional HTTP request headers, each formatted as
    *   "name: value".
+   *
    * @return
    *   The retrieved HTML string, also available as $this->drupalGetContent()
    */
@@ -1241,9 +1278,9 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     }
     // We set the user agent header on each request so as to use the current
     // time and a new uniqid.
-    //if (preg_match('/simpletest\d+/', $this->databasePrefix, $matches)) {
+    // if (preg_match('/simpletest\d+/', $this->databasePrefix, $matches)) {
     //  curl_setopt($this->curlHandle, CURLOPT_USERAGENT, drupal_generate_test_ua($matches[0]));
-    //}
+    // }
   }
 
   /**
@@ -1317,7 +1354,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
       '!method' => !empty($curl_options[CURLOPT_NOBODY]) ? 'HEAD' : (empty($curl_options[CURLOPT_POSTFIELDS]) ? 'GET' : 'POST'),
       '@url' => isset($original_url) ? $original_url : $url,
       '@status' => $status,
-      '!length' => format_size(strlen($this->drupalGetContent()))
+      '!length' => format_size(strlen($this->drupalGetContent())),
     );
     $message = t('!method @url returned @status (!length).', $message_vars);
     $this->assertTrue($this->drupalGetContent() !== FALSE, $message, t('Browser'));
@@ -1327,7 +1364,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
   /**
    * Reads headers and registers errors received from the tested site.
    *
-   * @see _drupal_log_error().
+   * @see _drupal_log_error()
    *
    * @param $curlHandler
    *   The cURL handler.
@@ -1418,7 +1455,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   NULL to post to the current page. For multi-stage forms you can set the
    *   path to NULL and have it post to the last received page. Example:
    *
-   *   @code
+   * @code
    *   // First step in form.
    *   $edit = array(...);
    *   $this->drupalPost('some_url', $edit, t('Save'));
@@ -1426,8 +1463,8 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   // Second step in form.
    *   $edit = array(...);
    *   $this->drupalPost(NULL, $edit, t('Save'));
-   *   @endcode
-   * @param  $edit
+   * @endcode
+   * @param $edit
    *   Field data in an associative array. Changes the current input fields
    *   (where possible) to the values indicated. A checkbox can be set to
    *   TRUE to be checked and FALSE to be unchecked. Note that when a form
@@ -1436,10 +1473,11 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *
    *   Multiple select fields can be set using name[] and setting each of the
    *   possible values. Example:
-   *   @code
+   *
+   * @code
    *   $edit = array();
    *   $edit['name[]'] = array('value1', 'value2');
-   *   @endcode
+   * @endcode
    * @param $submit
    *   Value of the submit button whose click is to be emulated. For example,
    *   t('Save'). The processing of the request depends on this value. For
@@ -1570,6 +1608,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Permissions to check.
    * @param $reset
    *   Reset cached available permissions.
+   *
    * @return
    *   TRUE or FALSE depending on whether the permissions are valid.
    */
@@ -1624,7 +1663,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
 
     $edit = array(
       'name' => $user->name,
-      'pass' => $user->pass_raw
+      'pass' => $user->pass_raw,
     );
     $this->drupalPost('user', $edit, t('Log in'));
 
@@ -1633,12 +1672,12 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     $pass = $this->assertLink(t('Log out'), 0, t('User %name successfully logged in.', array('%name' => $user->name)), t('User login'));
 
     if (1 || $pass) {
-      // TODO: declare this var
+      // @todo: declare this var.
       $this->loggedInUser = $user;
     }
   }
 
-  /*
+  /**
    * Logs a user out of the internal browser, then check the login page to confirm logout.
    */
   protected function drupalLogout() {
@@ -1661,6 +1700,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    * @param $settings
    *   An associative array of settings to change from the defaults, keys are
    *   node properties, for example 'title' => 'Hello, world!'.
+   *
    * @return
    *   Created node object.
    */
@@ -1723,6 +1763,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    * @param $settings
    *   An array of settings to change from the defaults.
    *   Example: 'type' => 'foo'.
+   *
    * @return
    *   Created content type.
    */
@@ -1781,6 +1822,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Text between the anchor tags.
    * @param $index
    *   Link position counting from zero.
+   *
    * @return
    *   Page on success, or FALSE on failure.
    */
@@ -1805,6 +1847,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *
    * @param $path
    *   A path from the internal browser content.
+   *
    * @return
    *   The $path with $base_url prepended, if necessary.
    */
@@ -1850,6 +1893,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    * @param $all_requests
    *   Boolean value specifying whether to return headers from all requests
    *   instead of just the last request. Defaults to FALSE.
+   *
    * @return
    *   A name/value array if headers from only the last request are requested.
    *   If headers from all requests are requested, an array of name/value
@@ -1903,6 +1947,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    * @param $all_requests
    *   Boolean value specifying whether to check all requests if the header is
    *   not found in the last request. Defaults to FALSE.
+   *
    * @return
    *   The HTTP header value or FALSE if not found.
    */
@@ -1945,6 +1990,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *
    * @param $filter
    *   An array containing key/value pairs used to filter the e-mails that are returned.
+   *
    * @return
    *   An array containing e-mail messages captured during the current test.
    */
@@ -1996,6 +2042,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    * @param $headers
    *   An array containing additional HTTP request headers, each formatted as
    *   "name: value".
+   *
    * @return
    *   The retrieved headers, also available as $this->drupalGetContent()
    */
@@ -2019,6 +2066,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   Form submit button value.
    * @param $form
    *   Array of form elements.
+   *
    * @return
    *   Submit value matches a valid submit input in the form.
    */
@@ -2168,6 +2216,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *   An array of arguments with keys in the form ':name' matching the
    *   placeholders in the query. The values may be either strings or numeric
    *   values.
+   *
    * @return
    *   An XPath query with arguments replaced.
    */
@@ -2200,6 +2249,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *
    * @param $xpath
    *   The xpath string to use in the search.
+   *
    * @return
    *   The return value of the xpath search. For details on the xpath string
    *   format and return values see the SimpleXML documentation,
@@ -2224,6 +2274,7 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
    *
    * @param $element
    *   The element for which to get the options.
+   *
    * @return
    *   Option elements in select.
    */
@@ -2314,18 +2365,14 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     $this->drupalSettings = $settings;
   }
 
-
   /*
-  *Print a log message to the console.
-  *
-  * @param string $message
-  * @param string $type
-  *   Supported types are:
-  *     - notice
-  *     - verbose
-  *     - debug
-  */
-  function log($message, $type = 'notice') {
+   * Print a log message to the console.
+   *
+   * @param string $message
+   * @param string $type
+   *   Supported types are: notice, verbose, debug.
+   */
+  public function log($message, $type = 'notice') {
     $line = "\nLog: $message\n";
     switch ($this->log_level()) {
       case 'verbose':
@@ -2340,7 +2387,10 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     }
   }
 
-  function log_level() {
+  /**
+   *
+   */
+public function log_level() {
     if (in_array('--debug', $_SERVER['argv'])) {
       return 'debug';
     }
@@ -2349,13 +2399,16 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     }
   }
 
-  function directory_cache($subdir = '') {
+  /**
+   *
+   */
+  public function directory_cache($subdir = '') {
     return getenv('CACHE_PREFIX') . '/' . $subdir;
   }
-  
+
   /**
    * Drop all the tables in the database defined.
-   * 
+   *
    * @param string $database
    *   Label of database to clear all the tables.
    */
@@ -2372,12 +2425,13 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     }
     print 'Drop took:' . (time() - $time) . "sec\n\n";
   }
+
   /**
    * Import database dump to be used.
    *
-   * @param String $database
+   * @param string $database
    *   Database name to be used.
-   * @param String $file
+   * @param string $file
    *   The dump file to import.
    */
   public static function import_database($database, $file) {
@@ -2395,8 +2449,5 @@ abstract class DrupalTestCase extends \PHPUnit\Framework\TestCase {
     exec($cmd, $output, $return);
     print 'Import finished took:' . (time() - $time) . "sec\n\n";
   }
-//  function db_url($env) {
-//    return substr(UPAL_DB_URL, 0, 6) == 'sqlite'  ?  "sqlite://sites/$env/files/unish.sqlite" : UPAL_DB_URL . '/unish_' . $env;
-//  }
 
- }
+}

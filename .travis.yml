@@ -1,0 +1,19 @@
+# .travis.yml - configuration file for the travis continuous integration service
+# see http://about.travis-ci.org/docs/user/languages/php for more hints
+#
+language: php
+
+# PHP versions to test against.
+# See: http://docs.travis-ci.com/user/languages/php/
+php:
+  - 7.1
+  - hhvm
+
+install:
+  - composer install
+script:
+  - find src -name "*.php" -exec php -l {} ';'
+  - composer -v exec 'phpcs --standard=Drupal -s -n src' || true
+  - php -r 'include "vendor/autoload.php"; class MyTest extends \NT\Drupal\Testing\PHPUnit\DrupalTestCase {};'
+after_install:
+  - composer show

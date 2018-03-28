@@ -1,28 +1,34 @@
 {
   "name": "NT/drupal-phpunit",
-  "description": "A library to integrate PHPUnit with Drupal",
-    "keywords": ["testing", "phpunit", "drupal"],
-    "type": "library",
-    "authors": [
-        {
-            "name": "John-Paul Drawneek",
-            "email": "jdrawneek@nationaltheatre.org.uk"
-        }
-    ],
-    "require": {
-        "php": 				">=5.3.3",
-    	"phpunit/phpunit": 		">=3.7.1@stable",
-        "behat/behat": 			">=2.4@stable",
-	"behat/mink": 			">=1.4@stable",
-        "behat/mink-extension": 	"*"
-    },
-    "autoload": {
-        "psr-0": {
-	    "NT\\Drupal\\Testing": "src"
-        },
-        "classmap": [
-            "src/NT/Drupal/Testing/PHPUnit/",
-            "src/NT/Drupal/Testing/Fixtures/"
-        ]
+  "description": "A library to integrate PHPUnit with Drupal 7",
+  "keywords": ["testing", "phpunit", "drupal"],
+  "type": "library",
+  "authors": [
+    {
+      "name": "Royal National Theatre",
+      "email": "NTCI@users.noreply.github.com"
     }
-} 
+  ],
+  "require": {
+    "php":                  ">=5.6",
+    "phpunit/phpunit":      "^6.5@stable",
+    "behat/behat":          "2.*@stable",
+    "behat/mink":           "1.*@stable",
+    "behat/mink-extension": "*"
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+    "drupal/coder":                    "^8@stable",
+    "pheromone/phpcs-security-audit":  "^1@stable",
+    "squizlabs/php_codesniffer":       "^2@stable"
+  },
+  "autoload": {
+    "psr-0": {
+      "NT\\Drupal\\Testing": "src"
+    },
+    "classmap": [
+      "src/NT/Drupal/Testing/PHPUnit/",
+      "src/NT/Drupal/Testing/Fixtures/"
+    ]
+  }
+}

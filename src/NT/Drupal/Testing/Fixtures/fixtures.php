@@ -1,17 +1,23 @@
 <?php
-/**
- *  @copyright The Royal National Theatre
- *  @author John-Paul Drawneek <jdrawneek@nationaltheatre.org.uk>
- */
+
 namespace NT\Drupal\Testing\Fixtures;
 
+use NT\Drupal\Testing\PHPUnit\fixture_helper;
+
+/**
+ *
+ */
 abstract class fixtures {
-  
+
+  /**
+   *
+   */
   public function __construct() {
     $data = $this->data();
     $node = $this->parseData($data);
     $this::$data = $node;
   }
+
   /**
    * Parse the data into a node.
    *
@@ -43,6 +49,7 @@ abstract class fixtures {
     }
     return $node;
   }
+
   /**
    * Get the current data for this fixture.
    *
@@ -52,16 +59,18 @@ abstract class fixtures {
   public function getData() {
     return $this::$data;
   }
+
   /**
    * Reset this fixture to have nid of NULL.
    */
   public function reset() {
     $this::$nid = NULL;
   }
+
   /**
    * Main function to create a fixture.
    *
-   * @return Int
+   * @return int
    *   NID of the fixture created.
    */
   public function run() {
@@ -71,6 +80,7 @@ abstract class fixtures {
     }
     return $this::$nid;
   }
+
   /**
    * Install node.
    *
@@ -89,7 +99,6 @@ abstract class fixtures {
       unset($node->vid);
       unset($node->path);
       $node->path['pathauto'] = 1;
-      //var_dump($node->type);
       $this->dependanices($node);
       node_save($node);
       return $node->nid;
@@ -98,17 +107,20 @@ abstract class fixtures {
       throw new \Exception('Missing node_save().');
     }
   }
-  
+
+  /**
+   *
+   */
   protected function dependanices(&$node) {
     foreach ($node as $key => &$value) {
       if ($key === 'nid' && is_object($value)) {
         $value = $this->install_node($value);
       }
       elseif ($key === 'nid' && !is_numeric($value) && is_string($value)) {
-        $value = \NT\Drupal\Testing\PHPUnit\fixture_helper::setup($value, 'Image');
+        $value = fixture_helper::setup($value, 'Image');
       }
       elseif ($key === 'nid' && !is_numeric($value) && is_array($value)) {
-        $value = \NT\Drupal\Testing\PHPUnit\fixture_helper::setup($value['source'], $value['type']);
+        $value = fixture_helper::setup($value['source'], $value['type']);
       }
       else {
         if (is_array($value)) {
@@ -117,7 +129,10 @@ abstract class fixtures {
       }
     }
   }
-  
+
+  /**
+   *
+   */
   protected function multi_image($data) {
     $output = array();
     foreach ($data as $item) {
@@ -130,7 +145,10 @@ abstract class fixtures {
     }
     return $output;
   }
-  
+
+  /**
+   *
+   */
   protected function multi_nt_image($data) {
     $output = array();
     foreach ($data as $item) {
@@ -144,7 +162,10 @@ abstract class fixtures {
     var_dump($output);
     return $output;
   }
-  
+
+  /**
+   *
+   */
   protected function install_image($data) {
     $data += array(
       'title'                => 'image_' . time(),
@@ -189,16 +210,19 @@ abstract class fixtures {
     $node->field_asset_category['und'] = $data['field_asset_category'];
     return $node;
   }
-  
+
+  /**
+   *
+   */
   protected function install_nt_image($data) {
     $data += array(
-      'title'               =>'image_' . time(),
-      'nt_display_title'    =>'',
-      'nt_image_image'      =>'',
+      'title'               => 'image_' . time(),
+      'nt_display_title'    => '',
+      'nt_image_image'      => '',
       'image_title'         => '',
       'image_alt'           => '',
-      'body'                =>'',
-      'nt_credits'          =>'',
+      'body'                => '',
+      'nt_credits'          => '',
       'nt_tags'             => array(),
       'nt_image_production' => NULL,
       'nt_archive_code'     => NULL,
@@ -236,7 +260,10 @@ abstract class fixtures {
     $node->nt_asset_category['und'] = $data['nt_asset_category'];
     return $node;
   }
-  
+
+  /**
+   *
+   */
   protected function install_rich_media($data) {
     $data += array(
       'title'              => 'Rich Media_' . time(),
@@ -270,9 +297,11 @@ abstract class fixtures {
     return $node;
   }
 
+  /**
+   *
+   */
   protected function multi_media_ref($data) {
     $output = array();
-//    var_dump($data);
     foreach ($data as $item) {
       if (isset($item['nid'])) {
         $output[] = array('nid' => $item['nid']);
@@ -281,10 +310,13 @@ abstract class fixtures {
         $output[] = array('nid' => $this->install_media_ref($item));
       }
     }
-    
+
     return $output;
   }
 
+  /**
+   *
+   */
   protected function install_media_ref($data) {
     $type = array_shift(array_keys($data));
     $id = NULL;
@@ -305,9 +337,11 @@ abstract class fixtures {
     return $id;
   }
 
+  /**
+   *
+   */
   protected function multi_video($data) {
     $output = array();
-//    var_dump($data);
     foreach ($data as $item) {
       if (isset($item['nid'])) {
         $output[] = array('nid' => $item['nid']);
@@ -316,10 +350,13 @@ abstract class fixtures {
         $output[] = array('nid' => $this->install_video($item));
       }
     }
-    
+
     return $output;
   }
-  
+
+  /**
+   *
+   */
   protected function install_video($data) {
     $data += array(
       'title'                 => 'Video_' . time(),
@@ -338,7 +375,7 @@ abstract class fixtures {
       'field_project_title'  => '',
       'field_weighting'      => 1,
     );
-    
+
     if (is_array($data['field_thumb'])) {
       $data['field_thumb'] = $this->multi_image($data['field_thumb']);
     }
@@ -349,7 +386,7 @@ abstract class fixtures {
     $node->status = 1;
     $node->name = 'admin';
     $node->uid = 1;
-    
+
     $node->title = $data['title'];
     $node->body['und'][0]['value'] = $data['body'];
     $node->body['und'][0]['format'] = 'full_html';
@@ -367,7 +404,7 @@ abstract class fixtures {
     $node->field_credits['und'][0]['value'] = $data['field_credits'];
     if (isset($data['field_asset_category'])) {
       $node->field_asset_category['und'][0]['tid'] = $data['field_asset_category'];
-    }    
+    }
     if (isset($data['field_backstage'])) {
       foreach ($data['field_backstage'] as $delta => $value) {
         $node->field_backstage['und'][$delta]['tid'] = $value;
@@ -380,10 +417,13 @@ abstract class fixtures {
     $node->field_asset_id['und'][0]['value'] = $data['field_asset_id'];
     $node->field_project_title['und'][0]['value'] = $data['field_project_title'];
     $node->field_weighting['und'][0]['value'] = $data['field_weighting'];
-    
+
     return $node;
   }
-  
+
+  /**
+   *
+   */
   protected function install_nt_video($data) {
     $data += array(
       'title'                 => 'Video_' . time(),
@@ -419,7 +459,7 @@ abstract class fixtures {
     $node->status = 1;
     $node->name = 'admin';
     $node->uid = 1;
-    
+
     $node->title = $data['title'];
     $node->body['und'][0]['value'] = $data['body'];
     $node->body['und'][0]['format'] = 'full_html';
@@ -451,7 +491,7 @@ abstract class fixtures {
     $node->nt_credits['und'][0]['value'] = $data['nt_credits'];
     if (isset($data['nt_asset_category'])) {
       $node->nt_asset_category['und'][0]['tid'] = $data['nt_asset_category'];
-    }    
+    }
     if (isset($data['nt_video_backstage'])) {
       foreach ($data['nt_video_backstage'] as $delta => $value) {
         $node->nt_video_backstage['und'][$delta]['tid'] = $value;
@@ -467,4 +507,5 @@ abstract class fixtures {
 
     return $node;
   }
+
 }

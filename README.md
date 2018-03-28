@@ -3,7 +3,7 @@ PHPUnit wrapper for Drupal 7
 
 ### Status
 
-Build status: ![National-Theatre/drupal-phpunit build status](https://api.travis-ci.org/National-Theatre/drupal-phpunit.svg?branch=master)
+Build status: [![National-Theatre/drupal-phpunit build status](https://api.travis-ci.org/National-Theatre/drupal-phpunit.svg?branch=master)](https://travis-ci.org/National-Theatre/drupal-phpunit)
 
 ### Prerequisites
 
